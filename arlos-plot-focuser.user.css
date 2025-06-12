@@ -1,10 +1,49 @@
 /* ==UserStyle==
 @name           Flight Rising: Arlo's Plot Focuser
 @namespace      userstyles.world/user/meow
-@version        1.0.1
+@version        1.1.0
 @description    Eliminate excess scrolling in Arlo's Ancient Artifacts digsites by bringing a specified plot to the top of the list.
 @author         dragonjpg
 
+@advanced dropdown compactlist "Compact Plot List" {
+compactlist1 "Enabled" <<<EOT 
+    #archaeology-dig-site-index {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .archaeology-dig-site-index-row {
+        height: auto;
+        clear: both;
+    }
+    .archaeology-dig-site-index-row-description {
+        display: none;
+    }
+    .archaeology-dig-site-index-row-details {
+        width: auto;
+        height: auto;
+    }
+    .archaeology-dig-site-index-row-stats-required, .archaeology-dig-site-index-row-stats-progress, .archaeology-dig-site-index-row-focus-toggle-text, .archaeology-dig-site-index-row-focus-toggle {
+        float: none;
+    }
+    .archaeology-dig-site-index-row-stats {
+        height: auto;
+        margin: 0.3em 0.5em;
+        text-align: center;
+    }
+    .archaeology-dig-site-index-row-stats-progress {
+        text-align: center;
+        margin-top: 0.3em;
+    }
+    .archaeology-dig-site-index-row-focus-toggle-frame.archaeology-dig-site-index-row-focus-toggle-frame {
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0.5em;
+    }
+EOT;
+theme2 "Disabled" <<<EOT EOT;
+}
 @advanced text plot1 "Digsite #1" "1"
 @advanced text plot2 "Digsite #2" "1"
 @advanced text plot3 "Digsite #3" "3"
@@ -12,6 +51,9 @@
 @advanced text plot5 "Digsite #5" "1"
 ==/UserStyle== */
 
+@-moz-document url("https://www1.flightrising.com/trading/archaeology/dig-sites") {
+    /*[[compactlist]]*/
+}
 
 @-moz-document url-prefix("https://www1.flightrising.com/trading/archaeology/dig-site/") {
     #archaeology-dig-plots {
