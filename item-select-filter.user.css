@@ -1,0 +1,89 @@
+/* ==UserStyle==
+@name           Flight Rising: AH Sell & Item Select Popup Filter
+@namespace      userstyles.world/user/meow
+@version        2.0.1
+@homepageURL    https://github.com/dragonjpg/flight-rising-misc
+@supportURL     https://github.com/dragonjpg/flight-rising-misc/issues
+@description    `Tired of scrolling through your massive hoard trying to find the item you want to sell/melt/mail/etc. by sight? Then this is the userstyle for you!`
+@author         Dragon.JPG
+
+@advanced text search "Search Query" "EditMe"
+@advanced dropdown case "Case" {
+case1 "Insensitive" <<<EOT i EOT;
+case2 "Sensitive" <<<EOT EOT;
+}
+@advanced dropdown style "Display Style" {
+style2 "Opacity" <<<EOT 
+    .itemicon.itemicon-small.ah-sell-item, .item-attachment {
+        opacity: 0.3;
+    }
+EOT;
+style1 "Visibility" <<<EOT 
+    .itemicon.itemicon-small.ah-sell-item, .item-attachment {
+        display: none;
+    }
+EOT;
+}
+==/UserStyle== */
+
+@-moz-document url-prefix("https://www1.flightrising.com/auction-house/sell/") {
+    /*[[style]]*/
+
+    /*Change AH item container to display grid in order to use order property for Style 2*/
+    .ah-sell-item-padcontainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    /*Ensure item images are 40x40*/
+    .ah-sell-item-padcontainer div.itemicon img {
+        width: 40px;
+        height: 40px;
+    }
+    /* Change search term via customizing the style's text input */
+    .itemicon.itemicon-small.ah-sell-item[data-name*="/*[[search]]*/" /*[[case]]*/] {
+        display: inline-block;
+        opacity: 1;
+        order: -1;
+    }
+}
+
+@-moz-document url-prefix("https://www1.flightrising.com/crossroads/"), url-prefix("https://www1.flightrising.com/msgs/") {
+    /*[[style]]*/
+    
+    /*use display flex to rearrange items*/
+    #itempage {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    /*make sure items are 40x40*/
+    span.item-attachment {
+        height: 40px;
+        width: 40px;
+    }
+    /* Change search term via customizing the style's text input */
+    .item-attachment:has(img[alt*="/*[[search]]*/" /*[[case]]*/]) {
+        display: block;
+        opacity: 1;
+        order: -1;
+    }
+}
+@-moz-document url-prefix("https://www1.flightrising.com/trading/baldwin/") {
+    /*[[style]]*/
+    
+    /*use display flex to rearrange items*/
+    #itempage {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    /*make sure items are 40x40*/
+    span.item-attachment {
+        height: 40px;
+        width: 40px;
+    }
+    /* Change search term via customizing the style's text input */
+    .item-attachment:has(a[data-name*="/*[[search]]*/" /*[[case]]*/]) {
+        opacity: 1;
+        order: -1;
+        display: block;
+    }
+}
