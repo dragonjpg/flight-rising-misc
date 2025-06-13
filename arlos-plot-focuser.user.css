@@ -1,8 +1,10 @@
 /* ==UserStyle==
 @name           Flight Rising: Arlo's Plot Focuser
 @namespace      userstyles.world/user/meow
-@version        1.1.0
-@description    Eliminate excess scrolling in Arlo's Ancient Artifacts digsites by bringing a specified plot to the top of the list.
+@homepageURL    https://github.com/dragonjpg/flight-rising-misc
+@supportURL     https://github.com/dragonjpg/flight-rising-misc/issues
+@version        1.1.1
+@description    Eliminate excess scrolling in Arlo's Ancient Artifacts digsites by bringing a specified plot to the top of the list and optionally compacting the dig site list.
 @author         dragonjpg
 
 @advanced dropdown compactlist "Compact Plot List" {
@@ -42,7 +44,7 @@ compactlist1 "Enabled" <<<EOT
         margin: 0.5em;
     }
 EOT;
-theme2 "Disabled" <<<EOT EOT;
+compactlist2 "Disabled" <<<EOT EOT;
 }
 @advanced text plot1 "Digsite #1" "1"
 @advanced text plot2 "Digsite #2" "1"
