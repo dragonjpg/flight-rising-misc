@@ -26,9 +26,11 @@ Eliminate excess scrolling in Arlo's Ancient Artifacts digsites by bringing a sp
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scry-dresser.user.css)
 - [Userstyles.World Mirror](https://userstyles.world/style/15870/flight-rising-scry-dresser)
 
-Simple userstyle that allows you to preview outfits/skins directly in the scrying workshop or the dressing room without having to save the scry or the outfits. Outfits MUST have a marva's invisibility cloak included.
+Simple userstyle that allows you to preview outfits/skins directly in the scrying workshop or the dressing room without having to save the scry or the outfits.\
+**Outfits MUST have a marva's invisibility cloak included.**
 
-![Gif showcasing the style](https://i.postimg.cc/FKJqfMVf/quickscry.gif)
+![image](https://github.com/user-attachments/assets/c5d59960-2b19-47d3-81ef-b39f66fb925e)
+
 
 ## 3. AH Sell & Item Select Popup Filter
 **Last Updated:** 2025-06-13\
