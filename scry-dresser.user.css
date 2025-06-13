@@ -1,0 +1,59 @@
+/* ==UserStyle==
+@name           Flight Rising: Scry Dresser
+@namespace      userstyles.world/user/meow
+@homepageURL    https://github.com/dragonjpg/flight-rising-misc
+@supportURL     https://github.com/dragonjpg/flight-rising-misc/issues
+@version        1.0.1
+@description    Quick n dirty dress up previewing in the workshop or the dressing room
+@author         DragonJPG
+
+@advanced text scry "Scry (Applies to Dressing Room)" "url"
+@advanced text outfit "Outfit w/ Invis Cloak (Applies to Scrying Workshop)" "url"
+@advanced text skin "Skin ID" "x"
+==/UserStyle== */
+
+@-moz-document url-prefix("https://www1.flightrising.com/dressing/outfit") {
+    #dragon-image-box {
+        background: url(/*[[scry]]*/) no-repeat;
+        position: relative;
+    }
+    #dragon-image-box::before  {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        content: '';
+        background: url(https://flightrising.com/images/cms/skins/art//*[[skin]]*/.png) no-repeat;
+        z-index: 2;
+    }
+    #dragon-image-box img {
+        position: relative;
+        z-index: 4;
+    }
+}
+@-moz-document url-prefix("https://www1.flightrising.com/scrying/predict") {
+    #dragon-image {
+        position: relative;
+    }
+    #dragon-image::before  {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        content: '';
+        background: url(https://flightrising.com/images/cms/skins/art//*[[skin]]*/.png) no-repeat;
+        z-index: 2;
+    }
+    #dragon-image::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        content: '';
+        background: url(/*[[outfit]]*/) no-repeat;
+        z-index: 4;
+    }
+}
