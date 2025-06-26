@@ -3,7 +3,7 @@
 @namespace      userstyles.world/user/meow
 @homepageURL    https://github.com/dragonjpg/flight-rising-misc
 @supportURL     https://github.com/dragonjpg/flight-rising-misc/issues
-@version        1.1.1
+@version        1.2.0
 @description    Eliminate excess scrolling in Arlo's Ancient Artifacts digsites by bringing a specified plot to the top of the list and optionally compacting the dig site list.
 @author         dragonjpg
 
@@ -45,6 +45,14 @@ compactlist1 "Enabled" <<<EOT
     }
 EOT;
 compactlist2 "Disabled" <<<EOT EOT;
+}
+@advanced dropdown completetotop "Move Claimable Items to Top of List" {
+c2top1 "Enabled" <<<EOT
+.archaeology-dig-plot-frame:has(.common-ui-button.archaeology-dig-plot-claim) {
+    order: -2;
+}
+EOT;
+c2top2 "Disabled" <<<EOT EOT;
 }
 @advanced text plot1 "Digsite #1" "1"
 @advanced text plot2 "Digsite #2" "1"
@@ -110,6 +118,7 @@ compactlist2 "Disabled" <<<EOT EOT;
         top: 13px;
         left: 32px;
     }
+    /*[[completetotop]]*/
 }
 @-moz-document url-prefix("https://www1.flightrising.com/trading/archaeology/dig-site/1") {
     .archaeology-dig-plot-frame:nth-child(/*[[plot1]]*/) {
