@@ -80,9 +80,9 @@ Adds a few more BBCode widgets that you can copy and paste to use in bios. The g
 <img width="360" height="411" alt="image" src="https://github.com/user-attachments/assets/fb6b6559-b79a-4f52-9ddb-7144ae70dc80" />
 
 
-- This script is compatible with base FR and my dark mode.
+- This script has css-only tooltips that are compatible with base FR and my dark mode.
 - The copy buttons added by the script utilize Flight Rising's existing function, **frCopyToClipboard**, to copy the text to your clipboard.
-- It also adds an alt tag to the existing **Widget**, which has also been relabeled as **Fullsize Widget**.\
+- It also adds an alt tag to the existing **Widget**, which has also been relabeled as **Fullsize Widget**:\
   <img width="350" height="350" alt="image" src="https://github.com/user-attachments/assets/56721231-e713-4ef4-b1e1-cc6ccb663bd6" />\
   Example output: ``[url=https://www1.flightrising.com/dragon/1110482][img alt="PlagueFestival (#1110482)"]https://www1.flightrising.com/rendern/350/11105/1110482_350.png[/img][/url]``
 - It adds the following additional widgets:
@@ -112,8 +112,8 @@ Adds a third share button to the Predict Morphology page next to the share image
 [url=https://www1.flightrising.com/scrying/predict?breed=13&gender=1&age=1&bodygene=450&body=102&winggene=318&wings=100&tertgene=14&tert=125&element=1&eyetype=1][img alt="Adult Female Skydancer dragon with Honeydew Varnish primary, Spruce Lode secondary, and Pistachio Runes tertiary genes. The dragon has Uncommon Earth element eyes."]https://www1.flightrising.com/dgen/preview/dragon?age=1&body=102&bodygene=450&breed=13&element=1&eyetype=1&gender=1&tert=125&tertgene=14&winggene=318&wings=100&auth=4dcb9e7a48a6cff03b6a3d44f505c7d2248d31c3&dummyext=prev.png[/img][/url]
 ```
 
-- This script is compatible with base FR and my dark mode.
-- The button added by the script utilize Flight Rising's existing function, **frCopyToClipboard**, to copy the text to your clipboard.
+- This script has css-only tooltips that are compatible with base FR and my dark mode.
+- The button added by the script utilizes Flight Rising's existing function, **frCopyToClipboard**, to copy the text to your clipboard.
 
 
 ## 3. Quick Ping
@@ -129,9 +129,9 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/bf6f1f07-b3dd-4396-92e3-333393e949c9" />
 
 
-- This script is compatible with base FR and my dark mode.
+- This script has css-only tooltips that are compatible with base FR and my dark mode.
 - It behaves similar to the Quick Quote by immediately focusing the Quick Reply button after the ping button is clicked, but unlike quick quote it does not overwrite any existing text.
-- The button added by the script utilizes Flight Rising's existing function, **doAddTags**, to append the ping to the quick reply textarea. This means that the ping buttons work exactly like the Bold/Italic/etc. buttons. This means you can highlight a section of text and it will append the ping to the start of that text, or you can place your cursor at a specific position in the text and then click the ping button and it will insert the ping at that position.
-- Each ping is inserted with a space following the username so that you can chain button clicks to ping multiple users in a single quick reply without having to do any typing inbetween.
-- Visually Disables quote/ping buttons in locked threads for aesthetic purposes because they don't do anything anyways. ¯\\\_(ツ)\_/¯
+- The buttons added by the script utilize Flight Rising's existing function, **doAddTags**, to append the ping to the quick reply textarea. This means that the ping buttons work _exactly_ like the Bold/Italic/etc. buttons.
+- Each ping is inserted with a space following the username so that you can chain button clicks to ping multiple users in a single quick reply without having to do any typing inbetween and/or start typing as soon as the text box is focused.
+- Visually Disables any quote/ping buttons in locked threads for aesthetic purposes because they don't do anything anyways. ¯\\\_(ツ)\_/¯
 - Blocked posts and posts made by you are unaffected.
