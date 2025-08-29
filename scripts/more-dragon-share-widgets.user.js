@@ -4,6 +4,7 @@
 // @version      1.0.0
 // @description  adds more share widgets and an alt tag of the dragon's name and id to the original full-size widget. utilizes FR's existing "frCopyToClipboard" function
 // @author       dragon.jpg
+// @license      GNU GPLv3
 // @match        https://www1.flightrising.com/dragon/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // @grant        none
