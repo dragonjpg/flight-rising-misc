@@ -12,10 +12,10 @@ All USO Versions of these styles are considered **abandoned.**
 
 # Style List
 ## 1. Arlo's Plot Focuser
-**Last Updated:** 2025-06-13\
-**Current Version:** 1.1.1\
+**Last Updated:** 2025-06-26\
+**Current Version:** 1.2.0\
 **Install**:
-- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/arlos-plot-focuser.user.css)
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/styles/arlos-plot-focuser.user.css)
 - [Userstyles.World Mirror](https://userstyles.world/style/9992/flight-rising-arlos-plot-focuser)
 
 Eliminate excess scrolling in Arlo's Ancient Artifacts digsites by bringing a specified plot to the top of the list and optionally compacting the dig site list.
@@ -24,12 +24,15 @@ Eliminate excess scrolling in Arlo's Ancient Artifacts digsites by bringing a sp
 - Hover over the plot to get its number.
 - Put that number into the style for the corresponding digsite.
 - It's now at the beginning of the list of plots. Hooray!
+- Optional Features:
+  - Move claimable items to the top of the list. No more looking for that one random thing that got completed when you used a pickaxe.
+  - Compact the digsite list for less scrolling.
 
 ## 2. Scry Dresser
 **Last Updated:** 2025-06-13\
 **Current Version:** 1.0.1\
 **Install**:
-- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scry-dresser.user.css)
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/styles/scry-dresser.user.css)
 - [Userstyles.World Mirror](https://userstyles.world/style/15870/flight-rising-scry-dresser)
 
 Simple userstyle that allows you to preview outfits/skins directly in the scrying workshop or the dressing room without having to save the scry or the outfits.\
@@ -42,7 +45,7 @@ Simple userstyle that allows you to preview outfits/skins directly in the scryin
 **Last Updated:** 2025-06-13\
 **Current Version:** 2.0.1\
 **Install**:
-- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/item-select-filter.user.css)
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/styles/item-select-filter.user.css)
 - [Userstyles.World Mirror](https://userstyles.world/style/5315/flight-rising-ah-sell-item-select-popup-filter)
 
 **Style #1:**\
