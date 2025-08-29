@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         More Dragon Share Widgets
+// @name         Flight Rising: More Dragon Share Widgets
 // @namespace    http://tampermonkey.net/
 // @version      1.0.0
 // @description  adds more share widgets and an alt tag of the dragon's name and id to the original full-size widget. utilizes FR's existing "frCopyToClipboard" function
