@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Morphology Widget
+// @name         Flight Rising: Morphology Widget
 // @namespace    http://tampermonkey.net/
 // @version      1.0.0
 // @description  adds a share button that generates a widget of the morphology's image with descriptive alt text that links to the morphology parameters in the workshop. utilizes FR's existing "frCopyToClipboard" function
