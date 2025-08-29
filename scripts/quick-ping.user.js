@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Quick Ping
+// @name         Flight Rising: Quick Ping
 // @namespace    http://tampermonkey.net/
 // @version      1.0.0
 // @description  Adds a button to the post controls that functions like Quick Reply. It appends a ping for the author of the post using FR's existing function for appending BBCode tags to textareas.
