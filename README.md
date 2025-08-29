@@ -75,6 +75,7 @@ Simple userstyle that allows you to preview outfits/skins directly in the scryin
 **Current Version:** 1.0.0\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-dragon-share-widgets.user.js)
+- [Greasyfork Mirror](https://greasyfork.org/en/scripts/547759-flight-rising-more-dragon-share-widgets)
 
 Adds a few more BBCode widgets that you can copy and paste to use in bios. The generated img tags have alt tags consisting of the dragon's name followed by their ID number.
 
@@ -104,6 +105,7 @@ Adds a few more BBCode widgets that you can copy and paste to use in bios. The g
 **Current Version:** 1.0.0\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/morphology-widget.user.js)
+- [Greasyfork Mirror](https://greasyfork.org/en/scripts/547760-flight-rising-morphology-widget)
 
 Adds a third share button to the Predict Morphology page next to the share image and link buttons. It copies bbcode of the morphology's picture that links directly to the morphology parameters to your clipboard for easy sharing of scries in the forums. Detailed alt text is copied from the alt tag of the generated morphology image on the page for accessibility.
 
@@ -124,6 +126,7 @@ Adds a third share button to the Predict Morphology page next to the share image
 **Current Version:** 1.0.0\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/quick-ping.user.js)
+- [Greasyfork Mirror](https://greasyfork.org/en/scripts/547761-flight-rising-quick-ping)
 
 Adds a button to the post controls that functions like Quick Quote but for pings. It appends a ping for the author of the post ('@author ') using FR's existing function for appending BBCode tags to the quick reply box and other textareas across the site.
 
