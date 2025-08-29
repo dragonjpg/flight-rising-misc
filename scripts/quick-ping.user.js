@@ -4,6 +4,7 @@
 // @version      1.0.0
 // @description  Adds a button to the post controls that functions like Quick Reply. It appends a ping for the author of the post using FR's existing function for appending BBCode tags to textareas.
 // @author       dragon.jpg
+// @license      GNU GPLv3
 // @match        https://www1.flightrising.com/forums/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // @grant        none
