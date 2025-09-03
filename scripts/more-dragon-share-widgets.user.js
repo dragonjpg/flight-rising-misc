@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name         Flight Rising: More Dragon Share Widgets
 // @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @version      1.0.1
 // @description  adds more share widgets and an alt tag of the dragon's name and id to the original full-size widget. utilizes FR's existing "frCopyToClipboard" function
 // @author       dragon.jpg
-// @license      GNU GPLv3
 // @match        https://www1.flightrising.com/dragon/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // @grant        none
@@ -38,7 +37,7 @@
     // define the share dialog for future use + also get the existing fullsize widget so we can modify it below
     var dragon_share_dialog = document.querySelector("#dragon-profile-share-dialog"),
         all_shares = dragon_share_dialog.querySelectorAll(" .dragon-profile-share-option"),
-        widget = all_shares[all_shares.length-1];
+        widget = all_shares[2];
 
     // create a template mirroring the existing widget code for our new share widgets
     var temp = document.createElement("div");
@@ -74,7 +73,7 @@
 
     // AVATAR
     // append new share widget to page & update label
-    dragon_share_dialog.appendChild(avatar);
+    widget.after(avatar);
     avatar.setAttribute("id","share_avatar");
     avatar.querySelector(".dragon-profile-share-label").innerText = "Avatar Widget:";
     // build the bbcode
@@ -112,7 +111,7 @@
 
     // LAIR
     // append new share widget to page & update label
-    dragon_share_dialog.appendChild(lair);
+    avatar.after(lair);
     lair.setAttribute("id","share_lair");
     lair.querySelector(".dragon-profile-share-label").innerText = "Lair Widget:";
     // build the bbcode
@@ -153,7 +152,7 @@
     // dragon gods don't have coli portraits so we're only gonna do stuff for the coli portrait if it's a normal dragon
     if (id > 11) {
         // append new share widget to page & update label
-        dragon_share_dialog.appendChild(coli);
+        lair.after(coli);
         coli.setAttribute("id","share_coli");
         coli.querySelector(".dragon-profile-share-label").innerText = "Coli Widget:";
         // build the bbcode
