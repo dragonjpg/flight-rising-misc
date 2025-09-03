@@ -1,0 +1,182 @@
+/* ==UserStyle==
+@name           Flight Rising: Compact Auction House
+@namespace      userstyles.world/user/meow
+@homepageURL    https://github.com/dragonjpg/flight-rising-misc
+@supportURL     https://github.com/dragonjpg/flight-rising-misc/issues
+@version        1.0.0
+@description    Compact card-style auction house layout.
+@author         dragonjpg
+==/UserStyle== */
+
+@-moz-document url-prefix("https://www1.flightrising.com/auction-house/buy/realm"), url-prefix("https://www1.flightrising.com/auction-house/buy/flight") {
+    #ah-content.ah-buy {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #ah-content.ah-buy > *:not(.ah-listing-row) {
+        width: 100%;
+    }
+    .ah-listing-row {
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 17%;
+        position: relative;
+        overflow: hidden;
+        height: unset;
+        justify-content: center;
+        padding: 0.5em;
+        margin: 0 0.25em 0.5em;
+        border: 1px solid var(--borders-med, silver);
+        align-content: space-evenly;
+        background: var(--widget, #fefefe);
+    }
+    .ah-listing-row:nth-child(2n+1) {
+        background: var(--widget-med, #F6F3EF)
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) {
+        min-height: 260px;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon):not([style*="display: none"]) ~ .ah-listing-row {
+        border: 1px solid var(--borders-med, silver);
+    }
+    .ah-listing-row :is(.itemicon img, .ah-listing-left, .ah-listing-right, .ah-listing-center) {
+        position: static;
+        max-width: 100%;
+    }
+    .ah-listing-row .itemicon.ah-listing-icon {
+        height: 80px;
+        width: 80px;
+        position: relative;
+        top: unset;
+        left: unset;
+    }
+    .ah-listing-row .ah-listing-left {
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    .ah-listing-row .ah-listing-left > div:nth-child(2) {
+        white-space: nowrap;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 0.9em;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-listing-left > div:first-child .ah-listing-itemname {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+    }
+    .ah-listing-row:not(:has(.ah-listing-dragon-icon)) .ah-listing-left > div:first-child .ah-listing-itemname {
+        margin-bottom: 0.5em;
+        display: block;
+    }
+    .ah-listing-row:not(:has(.ah-listing-dragon-icon)) .ah-listing-left > div:first-child .ah-listing-itemname a {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        z-index: 2;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-dragon-id {
+        display: block;
+        margin-bottom: 0.5em;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-listing-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 0.1em;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-energy-bar {
+        order: 2;
+        margin: 0.5em auto;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-listing-center .ah-coli-level {
+        width: unset;
+        flex-grow: 1;
+        text-align: right;
+        margin-left: auto;
+        padding: 0;
+        font-size: 0px;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-listing-center .ah-coli-level :is(b,strong) {
+        font-size: 0.7rem;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-listing-center strong {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        pointer-events: none;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-listing-center .ah-coli-level b::before {
+        content: 'Lvl ';
+        font-weight: normal;
+        color: var(--text, #000);
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-listing-center img {
+        padding: 0;
+    }
+    .ah-listing-row:has(.ah-listing-dragon-icon) .ah-coli-level:nth-child(9) {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 0.5em;
+    }
+    .ah-listing-row .ah-listing-sellprice > div:first-child {
+        display: none;
+    }
+    .ah-listing-row .ah-listing-currency {
+        max-width: 100%;
+        margin: 0;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        grid-gap: 0.2em;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .ah-listing-row .ah-listing-currency span {
+        display: block;
+        word-wrap: break-word;
+    }
+    .ah-listing-row .ah-listing-right {
+        display: flex;
+        padding: 0;
+        justify-content: space-between;
+        width: 100%;
+        flex-grow: 1;
+        align-items: center;
+    }
+    .ah-listing-row .ah-listing-sellprice {
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+        max-width: calc(100% - 48px);
+    }
+    .ah-listing-row .ah-listing-buy-button {
+        flex-shrink: 0;
+        color: var(--button-text, #731d08);
+        text-shadow: 0 1px 1px var(--shadow, #fff);
+        -webkit-box-shadow: 0 2px 3px var(--shadow, #bcbcbc);
+        border-bottom: 1px solid var(--borders-med, #a2a2a2);
+        background: linear-gradient(to bottom, var(--beige-button-one, #dcd6c8) 0%, var(--beige-button-two, #dcd6c8) 100%);
+        height: auto;
+        width: auto;
+        padding: 2px 7px;
+        filter: none;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+    .ah-listing-row .ah-listing-expiry {
+        font-size: 0.9em;
+    }
+    .ah-listing-row .ah-listing-buy-button:hover,
+    .ah-listing-row .ah-listing-buy-button:focus {
+        color: var(--button-text);
+        background: linear-gradient(to top, var(--beige-button-one, #BFB9AC) 0%, var(--beige-button-two, #BFB9AC) 100%);
+    }
+    .ah-listing-row .ah-listing-buy-button::before {
+        content: "BUY";
+    }
+}
