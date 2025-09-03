@@ -86,8 +86,8 @@ Re-styles the auction house to use cards to fit 5 listings per row. Compatible w
 
 # Script List
 ## 1. More Dragon Share Widgets
-**Last Updated:** 2025-08-27\
-**Current Version:** 1.0.0\
+**Last Updated:** 2025-09-03\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-dragon-share-widgets.user.js)
 - [Greasyfork Mirror](https://greasyfork.org/en/scripts/547759-flight-rising-more-dragon-share-widgets)
