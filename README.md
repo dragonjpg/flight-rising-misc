@@ -74,7 +74,7 @@ Simple userstyle that allows you to preview outfits/skins directly in the scryin
 **Current Version:** 1.0.0\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/styles/compact-auction-house.user.css)
-- [Userstyles.World Mirror](https://userstyles.world/style/)
+- [Userstyles.World Mirror](https://userstyles.world/style/24019/flight-rising-compact-auction-house)
 
 Re-styles the auction house to use cards to fit 5 listings per row. Compatible with base FR & my dark mode. **Does not affect Private Auctions.**
 
