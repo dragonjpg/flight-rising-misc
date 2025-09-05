@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Flight Rising: AH Additional Dragon Info
-// @namespace    https://github.com/dragonjpg/
+// @namespace    https://github.com/dragonjpg
 // @author       dragon.jpg
 // @description  add labels for dragon colors, g1 status (optional), double color patterns (optional), & consecutive colors (optional). Data is sourced from the dragon tooltips that are rendered on the page. Edit script to change settings. Based on zombae's script: https://greasyfork.org/en/scripts/412508 & fully compatible with my dark mode and compact auction house userstyles
 // @match        https://*.flightrising.com/auction-house/buy/*/dragons*
