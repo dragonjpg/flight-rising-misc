@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Flight Rising: Better Scrying Workshop
-// @namespace   https://github.com/dragonjpg/
+// @namespace   https://github.com/dragonjpg
 // @author      dragon.jpg
 // @description based on a script by zombae (https://greasyfork.org/en/scripts/423730). adds next/previous buttons for each dropdown, the option to auto-scry on dropdown change, and a button to quickly copy a BBCode widget of the morphology image that links to its parameters. 
 // @match       https://www1.flightrising.com/scrying/predict*
