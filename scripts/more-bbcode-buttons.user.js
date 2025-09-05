@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name        Flight Rising: More BBCode Buttons
 // @namespace   https://github.com/dragonjpg
+// @author      dragon.jpg
+// @description adds more icons to the BBCode tag bar in various places across the site. includes buttons for color, size, columns, etc.
 // @match       https://*.flightrising.com/dragon/*
 // @match       https://*.flightrising.com/clan-profile/*
 // @match       https://*.flightrising.com/forums/*
 // @match       https://*.flightrising.com/msgs/*
 // @grant       none
 // @version     1.0.0
-// @author      dragonjpg
-// @description adds more icons to the BBCode tag bar. includes buttons for color, size, columns, etc.
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // ==/UserScript==
 
