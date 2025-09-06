@@ -86,8 +86,8 @@ Re-styles the auction house to use cards to fit 5 listings per row. Compatible w
 
 # Script List
 ## 1. More Dragon Share Widgets
-**Last Updated:** 2025-09-03\
-**Current Version:** 1.0.1\
+**Last Updated:** 2025-09-05\
+**Current Version:** 1.0.2\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-dragon-share-widgets.user.js)
 - [Greasyfork Mirror](https://greasyfork.org/en/scripts/547759-flight-rising-more-dragon-share-widgets)
@@ -116,8 +116,8 @@ Adds a few more BBCode widgets that you can copy and paste to use in bios. The g
     Example output: ``[url=https://www1.flightrising.com/dragon/1110482][img alt="PlagueFestival (#1110482)"]https://flightrising.com/rendern/coliseum/portraits/11105/1110482.png[/img][/url]``
 
 ## 2. Morphology Widget
-**Last Updated:** 2025-08-27\
-**Current Version:** 1.0.0\
+**Last Updated:** 2025-09-05\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/morphology-widget.user.js)
 - [Greasyfork Mirror](https://greasyfork.org/en/scripts/547760-flight-rising-morphology-widget)
@@ -137,8 +137,8 @@ Adds a third share button to the Predict Morphology page next to the share image
 
 
 ## 3. Quick Ping
-**Last Updated:** 2025-08-27\
-**Current Version:** 1.0.0\
+**Last Updated:** 2025-09-05\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/quick-ping.user.js)
 - [Greasyfork Mirror](https://greasyfork.org/en/scripts/547761-flight-rising-quick-ping)
@@ -156,3 +156,63 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 - Each ping is inserted with a space following the username so that you can chain button clicks to ping multiple users in a single quick reply without having to do any typing inbetween and/or start typing as soon as the text box is focused.
 - Visually Disables any quote/ping buttons in locked threads for aesthetic purposes because they don't do anything anyways. ¯\\\_(ツ)\_/¯
 - Blocked posts and posts made by you are unaffected.
+
+## 4. More BBCode Buttons
+**Last Updated:** 2025-09-05\
+**Current Version:** 1.0.0\
+**Install**:
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-bbcode-buttons.user.js)
+- Greasyfork Mirror
+
+Adds more buttons to the BBCode Bar. A settings menu can be accessed on the Forums Index Page:\
+<img width="273" height="126" alt="image" src="https://github.com/user-attachments/assets/621c3d75-ff60-41af-9d9d-0d59d0039d54" />\
+<img width="287" height="440" alt="image" src="https://github.com/user-attachments/assets/a7ffdd52-9b29-497a-acac-566619199ae9" />
+
+
+
+New Buttons Added for the Following:
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/27b96ddd-aeb3-43c4-916b-a9844adc1f79" /> Font
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/82fb5335-4594-48c9-bca1-d21439249a36" /> Color
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/0c7431e3-75a6-4a61-87a4-e53208b7ec46" /> Size
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/21b1d2b1-3e98-439a-a298-8bfdb2512c12" /> Spoiler Tags
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/c73e8bfc-a1e7-4250-8da6-70f0d27a8654" /> Superscript
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/23b05f25-a3a5-49bc-9cbf-07718ecf74de" /> Subscript
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/46df03ec-83bf-45c0-ac75-88112278b8ab" /> Tables (generates a layout with 1-6 columns)
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/d5cd9345-8c27-4366-ab51-40bd400b37ff" /> Hidden Tags
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/0c6b0540-eb9a-4239-a1f7-b093f84a4eac" /> Horizontal Rule
+
+**Screenshots:**\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/3d3414b9-a5da-41e7-b592-2348deebcf1f" />\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/9df5e295-ad3d-4515-8125-67350ac31183" />\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/04a6af7d-3662-4e46-b94c-0c120a89c56e" />\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/2ff0ba4b-b5b6-4be9-b78e-8c9cdfe097d8" />
+
+
+## 5. Better Scrying Workshop
+**Last Updated:** 2025-09-05\
+**Current Version:** 1.0.0\
+**Install**:
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/better-scrying-workshop.user.js)
+- Greasyfork Mirror
+
+Based on [a script by Zombae](https://greasyfork.org/en/scripts/423730). Adds next/previous buttons for each dropdown, the option to auto-scry on dropdown change, and includes the [Morphology Widget script](#2-morphology-widget). Fully compatible with my dark mode.
+
+**Screenshots:**\
+<img width="500"  alt="image" src="https://github.com/user-attachments/assets/97890165-9c0f-4a12-abef-870e508b5268" />
+<img width="500"  alt="image" src="https://github.com/user-attachments/assets/18f4bc27-89fd-467a-845b-69c6eb3faf86" />
+
+
+## 6. AH Additional Dragon Info
+**Last Updated:** 2025-09-05\
+**Current Version:** 1.0.0\
+**Install**:
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/ah-additional-dragon-info.user.js)
+- Greasyfork Mirror
+
+Add labels for dragon colors, g1 status (optional), double color patterns (optional), & consecutive colors (optional). Data is sourced from the dragon tooltips that are rendered on the page. Edit script to change settings. Based on [a script by Zombae](https://greasyfork.org/en/scripts/412508) & fully compatible with both my dark mode and compact auction house userstyles
+
+**Just this script:**\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/860e922a-7b0b-4571-92ab-f2ee25eb9d03" />
+
+**With Compact Auction House:**\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/2fbd7ada-5a47-48ff-b7bb-012f50b9fa29" />

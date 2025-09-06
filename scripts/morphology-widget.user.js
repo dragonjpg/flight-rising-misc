@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Flight Rising: Morphology Widget
-// @namespace    http://tampermonkey.net/
-// @version      1.0.0
+// @namespace    https://github.com/dragonjpg
+// @version      1.0.1
 // @description  adds a share button that generates a widget of the morphology's image with descriptive alt text that links to the morphology parameters in the workshop. utilizes FR's existing "frCopyToClipboard" function
 // @author       dragon.jpg
-// @license      GNU GPLv3
+// @license      MIT
 // @match        https://www1.flightrising.com/scrying/predict*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // @grant        none
