@@ -164,7 +164,11 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-bbcode-buttons.user.js)
 - Greasyfork Mirror
 
-Adds more buttons to the BBCode Bar.
+Adds more buttons to the BBCode Bar. A settings menu can be accessed on the Forums Index Page:\
+<img width="273" height="126" alt="image" src="https://github.com/user-attachments/assets/621c3d75-ff60-41af-9d9d-0d59d0039d54" />\
+<img width="287" height="440" alt="image" src="https://github.com/user-attachments/assets/a7ffdd52-9b29-497a-acac-566619199ae9" />
+
+
 
 New Buttons Added for the Following:
 - <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/27b96ddd-aeb3-43c4-916b-a9844adc1f79" /> Font
@@ -182,9 +186,6 @@ New Buttons Added for the Following:
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/9df5e295-ad3d-4515-8125-67350ac31183" />\
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/04a6af7d-3662-4e46-b94c-0c120a89c56e" />\
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/2ff0ba4b-b5b6-4be9-b78e-8c9cdfe097d8" />
-
-
-
 
 
 ## 5. Better Scrying Workshop
