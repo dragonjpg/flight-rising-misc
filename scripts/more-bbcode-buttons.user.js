@@ -2,7 +2,7 @@
 // @name        Flight Rising: More BBCode Buttons
 // @namespace   https://github.com/dragonjpg
 // @author      dragon.jpg
-// @description adds more icons to the BBCode tag bar in various places across the site. includes buttons for color, size, columns, etc. a settings menu can be found on the main page of the forums.
+// @description Adds more icons to the BBCode tag bar in various places across the site. includes buttons for color, size, columns, etc. adds more icons to the BBCode tag bar in various places across the site. Includes buttons for color, size, columns, etc. The settings menu can be found on the main page of the forums.
 // @match       https://*.flightrising.com/dragon/*
 // @match       https://*.flightrising.com/clan-profile/*
 // @match       https://*.flightrising.com/forums*
@@ -161,8 +161,8 @@
         text-align: left;
         display: none;
       }
-      .tipsy:hover::after { display: block; }
-      .bbcode-settings-modal:not(.hide) ~ .bbcode-settings-button::after { display: none; }
+      .tipsy:hover::after { display: block !important; }
+      .bbcode-settings-modal:not(.hide) ~ .bbcode-settings-button::after { display: none !important; }
       `;
       head.appendChild(style);
       style.type = 'text/css';
