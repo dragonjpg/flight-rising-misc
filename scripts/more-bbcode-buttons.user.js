@@ -105,6 +105,106 @@
     }
   ];
 
+  // SETTINGS MENU -> appears on Forums Index ONLY
+    if (document.querySelector("#forum-content:has(#forum-fr) #forum-controls")) {
+      const head = document.head || document.getElementsByTagName('head')[0],
+        style = document.createElement('style'),
+        css = `
+      .bbcode-settings-button {
+        padding: 0;
+        height: 47px;
+        width: 47px;
+        box-sizing: border-box;
+        position: relative;
+        top: -2px;
+        z-index: 5;
+      }
+      .bbcode-settings-modal:not(.hide) ~ .bbcode-settings-button::before {
+        content: '';
+        position:fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        border: none;
+      }
+      .bbcode-settings-modal {
+        position: absolute;
+        width: 240px;
+        min-height: 200px
+        z-index: 101;
+        top: 50px;
+        box-sizing: border-box;
+        left: calc(-50%);
+      }
+      .bbcode-settings-modal img {
+        vertical-align: middle;
+        border: 1px solid var(--borders, #ccc);
+        margin-left: 0.5em;
+      }
+      .tags {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        grid-gap: 0.5em;
+        margin: 0.8em 0 0.5em;
+      }
+      .hide {
+        display: none !important;
+      }
+      .tipsy::after {
+        content: attr(data-tipsy); min-width: 150px; max-width: 300px; height: auto; line-height: 120%;
+        font-size: 1rem; color: var(--text, #000); background: var(--tooltip-bg, #fff); border-radius: 10px;
+        font-size: inherit; position: absolute; border:1px solid var(--borders, #888);box-shadow:rgba(0, 0, 0, 0.5) 1px 1px 6px;
+        top: 112%; left: calc(50% - 100px); padding: 8px; box-sizing: border-box; z-index: 2;right:unset;bottom:unset;
+        text-align: left;
+        display: none;
+      }
+      .tipsy:hover::after { display: block; }
+      .bbcode-settings-modal:not(.hide) ~ .bbcode-settings-button::after { display: none; }
+      `;
+      head.appendChild(style);
+      style.type = 'text/css';
+      style.appendChild(document.createTextNode(css));
+
+      var forum_controls = document.querySelector("#forum-controls"),
+          settings_modal = document.createElement("div"),
+          settings_button = document.createElement("button");
+
+      // settings button
+      settings_button.classList = "common-ui-button bbcode-settings-button tipsy";
+      settings_button.setAttribute("data-tipsy", 'More BBCode Buttons Script Settings');
+      settings_button.innerHTML = `<img src="/static/layout/lair/buttons/edit.png" role="button" alt="BBCode Button Settings">`;
+      settings_button.addEventListener("click", function(event) {
+        settings_modal.classList.toggle("hide");
+      });
+
+      // settings modal
+      settings_modal.classList = "ui-dialog ui-corner-all ui-widget ui-widget-content ui-front bbcode-settings-modal hide";
+      settings_modal.setAttribute("aria-labeled-by","ui-bbcode-settings");
+      settings_modal.innerHTML = `<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix"><span id="ui-bbcode-settings" class="ui-dialog-title">More BBCode Buttons Settings</span>
+        </div>
+      <div class="ui-dialog-content ui-widget-content">
+        <div class="common-dialog-section" id="bbcode-tag-list"><p>Enable Buttons:</p><div class="tags"></div></div>
+      </div>
+    `;
+      forum_controls.prepend(settings_button);
+      settings_button.before(settings_modal);
+
+      var settings_modal_content = settings_modal.querySelector("#bbcode-tag-list .tags");
+
+      // adding list of tags and their saved values
+      bbcode_tag_list.forEach(tag => {
+        let check = createCheck(tag.tag, tag.title, tag.src);
+        if (tag.prepend) {
+          settings_modal_content.prepend(" ", check);
+        } else {
+          settings_modal_content.append(check, " ");
+        }
+      });
+  }
+
   // we won't bother to do anything unless the BBCode bar will actually exist on the page
   if ( document.querySelector("textarea#message") || document.querySelector("#clan-profile-set-clan-bio") ) {
     if (repeat) {
@@ -143,32 +243,37 @@
 
     // loop thru & create buttons for each of our tags
     bbcode_tag_list.forEach(tag => {
-      var button = document.createElement("img");
-      button.src = tag.src;
-      button.alt = tag.title;
-      button.title = tag.title;
-      button.name = `btn${tag.title.replace(/\s/g, '')}`;
-      button.setAttribute("data-tag",tag.tag);
-      if (tag.type == 2) {
-        // tags with prompts
-        button.setAttribute("data-prompt",tag.prompt);
-        button.classList = `bbc-prompt`;
-      } else if (tag.type == 3) {
-        // tags without closing tags
-        button.classList = `bbc-single`;
-      } else {
-        // regular tags
-        button.classList = `bbc-normal`;
+      var getSavedVal = localStorage.getItem( `bbcode-${tag.tag}` );
+      // only add to bar if we saved it
+      if (getSavedVal == 'true' || getSavedVal == null) {
+        var button = document.createElement("img");
+        button.src = tag.src;
+        button.alt = tag.title;
+        button.title = tag.title;
+        button.name = `btn${tag.title.replace(/\s/g, '')}`;
+        button.setAttribute("data-tag",tag.tag);
+        if (tag.type == 2) {
+          // tags with prompts
+          button.setAttribute("data-prompt",tag.prompt);
+          button.classList = `bbc-prompt`;
+        } else if (tag.type == 3) {
+          // tags without closing tags
+          button.classList = `bbc-single`;
+        } else {
+          // regular tags
+          button.classList = `bbc-normal`;
+        }
+        // add to front or end of list. i like font, color, & size buttons to be at the front with b/i/u/etc so i set it up to do that :)
+        if (tag.prepend) {
+          bbcode_controls.prepend(" ", button);
+        } else {
+          bbcode_controls.append(button, " ");
+        }
       }
-      // add to front or end of list. i like font, color, & size buttons to be at the front with b/i/u/etc so i set it up to do that :)
-      if (tag.prepend) {
-        bbcode_controls.prepend(" ", button);
-      } else {
-        bbcode_controls.append(button, " ");
-      }
-
+      if (getSavedVal == null) { localStorage.setItem(`bbcode-${tag.tag}`, 'true')}; // setting to true on the first run of the script
     });
 
+    var count = 0;
     // for some reason it just didn't want to work when i was setting the click events in the above loop, so we just do it after in separate loops since we need to set up different functions for different behaviors anyways
     document.querySelectorAll('.bbc-prompt').forEach(bbcode => {
       // buttons with prompts get their own special function based on the dev's doURL function
@@ -176,6 +281,7 @@
       bbcode.addEventListener("click", function (e) {
        doPromptedTag(tag, prompt, textarea_to_affect);
       });
+      count++;
     });
     // non-prompt buttons can just use the site's doAddTags function
     document.querySelectorAll('.bbc-normal').forEach(bbcode => {
@@ -183,15 +289,17 @@
       bbcode.addEventListener("click", function (e) {
         doAddTags(`[${tag}]`,`[/${tag}]`,textarea_to_affect);
       });
+      count++;
     });
     document.querySelectorAll('.bbc-single').forEach(bbcode => {
       let tag = bbcode.getAttribute("data-tag");
       bbcode.addEventListener("click", function (e) {
         doAddTags(`[${tag}]`,``,textarea_to_affect);
       });
+      count++;
     });
 
-    console.log(`[BBC] DONE: ${bbcode_tag_list.length} buttons added!`);
+    console.log(`[BBC] DONE: ${count} Buttons added!`);
   }
 
   // function to handle any tag that needs a prompt
@@ -278,6 +386,35 @@
             subtree: true
         });
     });
+  }
+
+  function updateSetting( e ) {
+    localStorage.setItem( `bbcode-${e.target.name}`, e.target.checked );
+  }
+
+  // create checkbox el
+  function createCheck( name, label, image ) {
+    let itemContainer = document.createElement('div'),
+      getSavedVal = localStorage.getItem( `bbcode-${name}` );
+
+    itemContainer.innerHTML = `<label for="${name}"><span class="common-checkbox" data-selected="0"><input type="checkbox" id="${name}" name="${name}" /></span><span><img src="${image}"> ${label}</span>`;
+
+    let checkboxInput = itemContainer.querySelector("input");
+    checkboxInput.checked = (getSavedVal == 'true' || getSavedVal == null ) ? true : false;
+    if (getSavedVal == null) { localStorage.setItem( `bbcode-${name}` , 'true')};
+    isChecked(checkboxInput);
+    checkboxInput.addEventListener('click', (event) => { updateSetting(event); isChecked(checkboxInput);  });
+
+    return itemContainer;
+  }
+
+  // using logic of hoard setting checkboxes
+  function isChecked(checkbox) {
+    if (checkbox.checked) {
+      checkbox.parentNode.setAttribute("data-selected",1)
+    } else {
+      checkbox.parentNode.setAttribute("data-selected",0)
+    }
   }
 
 
