@@ -160,7 +160,7 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 
 ## 4. More BBCode Buttons
 **Last Updated:** 2025-09-05\
-**Current Version:** 1.0.0\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-bbcode-buttons.user.js)
 - Greasyfork Mirror
