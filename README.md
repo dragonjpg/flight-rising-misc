@@ -150,6 +150,7 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/bf6f1f07-b3dd-4396-92e3-333393e949c9" />
 
 
+- Now a part of **Forum & BBCode Tweaks**
 - This script has css-only tooltips that are compatible with base FR and my dark mode.
 - It behaves similar to the Quick Quote by immediately focusing the Quick Reply button after the ping button is clicked, but unlike quick quote it does not overwrite any existing text.
 - The buttons added by the script utilize Flight Rising's existing function, **doAddTags**, to append the ping to the quick reply textarea. This means that the ping buttons work _exactly_ like the Bold/Italic/etc. buttons.
@@ -159,12 +160,14 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 
 ## 4. More BBCode Buttons
 **Last Updated:** 2025-09-05\
-**Current Version:** 1.0.0\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-bbcode-buttons.user.js)
 - Greasyfork Mirror
 
-Adds more buttons to the BBCode Bar. A settings menu can be accessed on the Forums Index Page:\
+- **Now a Part of Forum & BBCode Tweaks**
+- Adds more buttons to the BBCode Bar. A settings menu can be accessed on the Forums Index Page:
+
 <img width="273" height="126" alt="image" src="https://github.com/user-attachments/assets/621c3d75-ff60-41af-9d9d-0d59d0039d54" />\
 <img width="287" height="440" alt="image" src="https://github.com/user-attachments/assets/a7ffdd52-9b29-497a-acac-566619199ae9" />
 
@@ -209,10 +212,63 @@ Based on [a script by Zombae](https://greasyfork.org/en/scripts/423730). Adds ne
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/ah-additional-dragon-info.user.js)
 - Greasyfork Mirror
 
-Add labels for dragon colors, g1 status (optional), double color patterns (optional), & consecutive colors (optional). Data is sourced from the dragon tooltips that are rendered on the page. Edit script to change settings. Based on [a script by Zombae](https://greasyfork.org/en/scripts/412508) & fully compatible with both my dark mode and compact auction house userstyles
+Add labels for dragon colors, g1 status (optional), double color patterns (optional), & consecutive colors (optional). **Color data is sourced from the dragon tooltips that are rendered on the page, no scraping of other pages occurs.** Edit script to change settings. Based on [a script by Zombae](https://greasyfork.org/en/scripts/412508) & fully compatible with both my dark mode and compact auction house userstyles
 
 **Just this script:**\
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/860e922a-7b0b-4571-92ab-f2ee25eb9d03" />
 
 **With Compact Auction House:**\
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/2fbd7ada-5a47-48ff-b7bb-012f50b9fa29" />
+
+## 7. Forum & BBCode Tweaks
+**Last Updated:** 2025-09-17\
+**Current Version:** 1.0.0\
+**Install**:
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/forum-and-bbcode-tweaks.user.js)
+- Greasyfork Mirror
+
+A fairly chunky QoL script for the forums. Includes slightly updated versions of **Quick Ping** and **More BBCode Buttons** along with many new features.
+
+### Features:
+- **Thread Tracker:** Allows you to create clientside bookmarks to threads, and can optionally keep track of starred threads as well. Data is stored in your browser's local storage.
+- **More BBCode Buttons:** New BBCode Buttons for supported tags for the BBCode Bar present on the clan profile, PMs, Dragon Profiles, and Forums. Some utilize existing functions on the site (``doAddTags``), while others use a custom prompt function based on the site's ``doURL`` function. You can customize which new buttons are enabled via the settings modal. Some do unique things, such as the columns button automatically generating a column layout with 1-6 columns.
+- **Quick Ping:** adds a button to each forum post which will simply append  ``@user`` to the quick reply box.
+- **Small QoL Options:** Optionally add links to a user's avatar dragon and den, as well as a link to a forum search for their recent posts. 
+- **Settings Modal:** No coding knowledge needed; customize the script by clicking the button that's present on the forums landing page and toggling the buttons.
+- **BACKUPS!** Export/Import settings in JSON format. Can be found in the settings modal.
+
+### TODO:
+- Eventually planning to add the ability to rearrange the order of bookmarks and starred threads. For now, you will have to rearrange them via the export/import function. Sorry!
+
+### Notes:
+- **NO scraping of other pages occurs.** All information is gathered from the page the script is on and your browser's storage. Some examples of note:
+   - If you don't star or bookmark the thread on the first page, the author information will *not* be available to the script because that would require scraping the first page of the thread.
+   - Links to bookmarks/starred threads goes to the index page of the thread since there's no way to know what the most recent page is without scraping the site.
+   - Links to avatar dragons are gathered from removing their ID number from the avatar image's URL and using it to create the /dragon/ URL.
+   - The recent forum posts link utilizes query strings in the URL to automatically fill the search's poster input with the author's username & submit the search, exactly like the links on clan profiles do ("view all" link on clan profile).
+   - etc.
+ - Fully compatible with both the base site and my Dark Mode.
+
+### Screenshots:
+**Settings Button next to Thread Tracker button on forum landing page:**\
+<img width="249" height="79" alt="image" src="https://github.com/user-attachments/assets/18f06f6f-f560-4fd5-aa20-ab1100d8f31f" />
+
+**Thread Tracker:**\
+<img width="478" height="310" alt="example thread tracker modal" src="https://github.com/user-attachments/assets/6244625f-643b-41f3-9261-7ccdf218640d" />
+
+**Settings Modal:**\
+<img width="381" height="560" alt="settings modal" src="https://github.com/user-attachments/assets/bacc438e-c2ee-45ce-b6fd-c945de3cbf52" />
+
+**Forum Controls inside a thread:**\
+<img width="769" height="81" alt="screenshot of forum controls with additional buttons for bookmarking and thread tracker inside of a thread" src="https://github.com/user-attachments/assets/adadad1b-e05e-4f8b-99fd-f60ddcea416b" />
+
+**Additional Buttons for Avatar Dragon and Den:**\
+<img width="158" height="346" alt="image" src="https://github.com/user-attachments/assets/46c450f4-f255-43a0-bba7-4cb633123da5" />
+
+**Recent Posts Link:**\
+<img width="324" height="124" alt="image" src="https://github.com/user-attachments/assets/48abc496-d32a-4af0-bf06-faaae3792ff0" />
+
+
+
+
+
