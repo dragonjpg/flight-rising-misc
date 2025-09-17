@@ -257,17 +257,17 @@ A fairly chunky QoL script for the forums. Includes slightly updated versions of
 <img width="478" height="310" alt="example thread tracker modal" src="https://github.com/user-attachments/assets/6244625f-643b-41f3-9261-7ccdf218640d" />
 
 **Settings Modal:**\
-<img width="381" height="760" alt="screenshot of settings modal" src="https://github.com/user-attachments/assets/534b71e2-86c6-4d3b-aeb3-777a99d5cb89" />
+<img width="381" height="560" alt="settings modal" src="https://github.com/user-attachments/assets/bacc438e-c2ee-45ce-b6fd-c945de3cbf52" />
 
 **Forum Controls inside a thread:**\
-<img width="769" height="81" alt="screenshot of " src="https://github.com/user-attachments/assets/adadad1b-e05e-4f8b-99fd-f60ddcea416b" />
+<img width="769" height="81" alt="screenshot of forum controls with additional buttons for bookmarking and thread tracker inside of a thread" src="https://github.com/user-attachments/assets/adadad1b-e05e-4f8b-99fd-f60ddcea416b" />
 
 **Additional Buttons for Avatar Dragon and Den:**\
 <img width="158" height="346" alt="image" src="https://github.com/user-attachments/assets/46c450f4-f255-43a0-bba7-4cb633123da5" />
 
+**Recent Posts Link:**\
+<img width="324" height="124" alt="image" src="https://github.com/user-attachments/assets/48abc496-d32a-4af0-bf06-faaae3792ff0" />
 
-**Begin a Forum Search Link:**\
-<img width="467" height="217" alt="begin a forum search" src="https://github.com/user-attachments/assets/c14b2963-92c7-4e52-b1f8-0faa74a0bd8b" />
 
 
 
