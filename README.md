@@ -233,7 +233,7 @@ A fairly chunky QoL script for the forums. Includes slightly updated versions of
 - **Thread Tracker:** Allows you to create clientside bookmarks to threads, and can optionally keep track of starred threads as well. Data is stored in your browser's local storage.
 - **More BBCode Buttons:** New BBCode Buttons for supported tags for the BBCode Bar present on the clan profile, PMs, Dragon Profiles, and Forums. Some utilize existing functions on the site (``doAddTags``), while others use a custom prompt function based on the site's ``doURL`` function. You can customize which new buttons are enabled via the settings modal. Some do unique things, such as the columns button automatically generating a column layout with 1-6 columns.
 - **Quick Ping:** adds a button to each forum post which will simply append  ``@user`` to the quick reply box.
-- **Small QoL Options:** Optionally add links to a user's avatar dragon and den, as well as a link to begin a forum search for the user. 
+- **Small QoL Options:** Optionally add links to a user's avatar dragon and den, as well as a link to a forum search for their recent posts. 
 - **Settings Modal:** No coding knowledge needed; customize the script by clicking the button that's present on the forums landing page and toggling the buttons.
 - **BACKUPS!** Export/Import settings in JSON format. Can be found in the settings modal.
 
@@ -244,8 +244,8 @@ A fairly chunky QoL script for the forums. Includes slightly updated versions of
 - **NO scraping of other pages occurs.** All information is gathered from the page the script is on and your browser's storage. Some examples of note:
    - If you don't star or bookmark the thread on the first page, the author information will *not* be available to the script because that would require scraping the first page of the thread.
    - Links to bookmarks/starred threads goes to the index page of the thread since there's no way to know what the most recent page is without scraping the site.
-   - Links to ther avatar dragons are gathered from removing their ID number from the avatar image's URL.
-   - Begin a Forum search link just utilizes query strings in the URL to automatically fill the search's poster input with the author's username, exactly how the search button in the forum controls does with the board/thread IDs.
+   - Links to avatar dragons are gathered from removing their ID number from the avatar image's URL and using it to create the /dragon/ URL.
+   - The recent forum posts link utilizes query strings in the URL to automatically fill the search's poster input with the author's username & submit the search, exactly like the links on clan profiles do ("view all" link on clan profile).
    - etc.
  - Fully compatible with both the base site and my Dark Mode.
 
