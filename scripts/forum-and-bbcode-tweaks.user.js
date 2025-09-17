@@ -443,7 +443,7 @@ function loadSettings() {
       thread_tracker_settings.append(createCheck(`show-authors`, `Show Thread Authors if Available`));
       misc_settings.append(createCheck(`ping-autofocus`, `Focus Quick Reply when Quick Ping is Clicked`));
       misc_settings.append(createCheck(`more-post-actions`, `Add Links to Author's Avatar Dragon and Hibden`));
-      misc_settings.append(createCheck(`forum-search-link`, `Turn the Post Count Label into a link to Begin a Forum Search for posts by the author`));
+      misc_settings.append(createCheck(`forum-search-link`, `Turn the Post Count Stat into a link to a forum search for recent posts by the author`));
     }
 }
 
@@ -780,7 +780,7 @@ function morePostActions(posts, add_more_actions, forum_search_link) {
       // optional begin a forum search link
       if (forum_search_link == "true") {
         let post_count_stat = stats.querySelector(`.post-author-stat[data-stat="post"]`);
-        post_count_stat.innerHTML = `<a href="https://${window.location.hostname}/search/forums?poster=${author}" class="post-stat-count" title="Begin a forum search for posts by ${author}">${post_count_stat.querySelector(".post-stat-count").innerText}</a>`;
+        post_count_stat.innerHTML = `<a href="https://${window.location.hostname}/search/forums?poster=${author}&sort=recent&submit=Search%2BForums" class="post-stat-count" title="Recent Posts by ${author}">${post_count_stat.querySelector(".post-stat-count").innerText}</a>`;
       }
       // add additional posts actions, skipping admins
       if (add_more_actions == "true" && !post.parentNode.classList.contains("post-admin")) {
