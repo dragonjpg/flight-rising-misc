@@ -171,8 +171,6 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 <img width="273" height="126" alt="image" src="https://github.com/user-attachments/assets/621c3d75-ff60-41af-9d9d-0d59d0039d54" />\
 <img width="287" height="440" alt="image" src="https://github.com/user-attachments/assets/a7ffdd52-9b29-497a-acac-566619199ae9" />
 
-
-
 New Buttons Added for the Following:
 - <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/27b96ddd-aeb3-43c4-916b-a9844adc1f79" /> Font
 - <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/82fb5335-4594-48c9-bca1-d21439249a36" /> Color
@@ -210,7 +208,7 @@ Based on [a script by Zombae](https://greasyfork.org/en/scripts/423730). Adds ne
 **Current Version:** 1.0.0\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/ah-additional-dragon-info.user.js)
-- Greasyfork Mirror
+- [Greasyfork Mirror](https://greasyfork.org/en/scripts/549885-flight-rising-ah-additional-dragon-info)
 
 Add labels for dragon colors, g1 status (optional), double color patterns (optional), & consecutive colors (optional). **Color data is sourced from the dragon tooltips that are rendered on the page, no scraping of other pages occurs.** Edit script to change settings. Based on [a script by Zombae](https://greasyfork.org/en/scripts/412508) & fully compatible with both my dark mode and compact auction house userstyles
 
@@ -225,7 +223,7 @@ Add labels for dragon colors, g1 status (optional), double color patterns (optio
 **Current Version:** 1.0.0\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/forum-and-bbcode-tweaks.user.js)
-- Greasyfork Mirror
+- [Greasyfork Mirror](https://greasyfork.org/en/scripts/549883-flight-rising-forum-bbcode-tweaks)
 
 A fairly chunky QoL script for the forums. Includes slightly updated versions of **Quick Ping** and **More BBCode Buttons** along with many new features.
 
@@ -267,6 +265,25 @@ A fairly chunky QoL script for the forums. Includes slightly updated versions of
 
 **Recent Posts Link:**\
 <img width="324" height="124" alt="image" src="https://github.com/user-attachments/assets/48abc496-d32a-4af0-bf06-faaae3792ff0" />
+
+**BBCode Buttons:**
+
+Add Optional Buttons:
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/27b96ddd-aeb3-43c4-916b-a9844adc1f79" /> Font
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/82fb5335-4594-48c9-bca1-d21439249a36" /> Color
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/0c7431e3-75a6-4a61-87a4-e53208b7ec46" /> Size
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/21b1d2b1-3e98-439a-a298-8bfdb2512c12" /> Spoiler Tags
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/c73e8bfc-a1e7-4250-8da6-70f0d27a8654" /> Superscript
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/23b05f25-a3a5-49bc-9cbf-07718ecf74de" /> Subscript
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/46df03ec-83bf-45c0-ac75-88112278b8ab" /> Tables (generates a layout with 1-6 columns)
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/d5cd9345-8c27-4366-ab51-40bd400b37ff" /> Hidden Tags
+- <img width="22" height="22" alt="image" src="https://github.com/user-attachments/assets/0c6b0540-eb9a-4239-a1f7-b093f84a4eac" /> Horizontal Rule
+
+**Buttons are added to the BBCode Bars present in the Forums, PMs, & Dragon Profiles:**
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/3d3414b9-a5da-41e7-b592-2348deebcf1f" />\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/9df5e295-ad3d-4515-8125-67350ac31183" />\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/04a6af7d-3662-4e46-b94c-0c120a89c56e" />\
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/2ff0ba4b-b5b6-4be9-b78e-8c9cdfe097d8" />
 
 
 
