@@ -169,8 +169,7 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-bbcode-buttons.user.js)
 - Greasyfork Mirror
 
-- **Now a Part of Forum & BBCode Tweaks**
-- Adds more buttons to the BBCode Bar. A settings menu can be accessed on the Forums Index Page:
+**Now a Part of Forum & BBCode Tweaks.** Adds more buttons to the BBCode Bar. A settings menu can be accessed on the Forums Index Page:
 
 <img width="273" height="126" alt="image" src="https://github.com/user-attachments/assets/621c3d75-ff60-41af-9d9d-0d59d0039d54" />\
 <img width="287" height="440" alt="image" src="https://github.com/user-attachments/assets/a7ffdd52-9b29-497a-acac-566619199ae9" />
