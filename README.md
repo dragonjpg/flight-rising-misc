@@ -70,18 +70,22 @@ Simple userstyle that allows you to preview outfits/skins directly in the scryin
 - One of the limitations of using only css is that I can't make it ignore the styling if the search has nothing in the string, so you have to disable the style when you're done searching and want to look through your items normally, and enable it again when you want to use the style to search for particular items.
 
 ## 4. Compact Auction House
-**Last Updated:** 2025-09-2\
-**Current Version:** 1.0.0\
+**Last Updated:** 2025-09-17\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/styles/compact-auction-house.user.css)
 - [Userstyles.World Mirror](https://userstyles.world/style/24019/flight-rising-compact-auction-house)
 
-Re-styles the auction house to use cards to fit 5 listings per row. Compatible with base FR & my dark mode. **Does not affect Private Auctions.**
+Re-styles the auction house to use cards to fit your choice of 4 or 5 listings per row. Compatible with base FR & my dark mode.
 
 **Screenshots:**\
-<img width="400" alt="compactauctionhouselight" src="https://github.com/user-attachments/assets/d35f1201-cb75-4806-a195-78f74f8cea84" /> 
-<img width="400" alt="compactauctionhouse" src="https://github.com/user-attachments/assets/67854e18-6a9d-4daa-b731-6c33f65569bd" />\
-<img width="500" alt="compactauctionhouselightitems" src="https://github.com/user-attachments/assets/538b672b-02de-4e0a-b3ec-99b44c9aa29a" />
+Light & Dark:\
+<img width="400" alt="without dark theme userstyle" src="https://github.com/user-attachments/assets/d35f1201-cb75-4806-a195-78f74f8cea84" /> 
+<img width="400" alt="with dark theme userstyle" src="https://github.com/user-attachments/assets/67854e18-6a9d-4daa-b731-6c33f65569bd" />\
+4 Cards Per Row vs. 5 Cards Per Row:\
+<img width="400" alt="four cards per row" src="https://github.com/user-attachments/assets/147835f8-ccf3-47ea-b99f-e2042911dcce" />
+<img width="400" alt="five cards per row" src="https://github.com/user-attachments/assets/17343456-4cbf-411b-b3da-ec3c9d2126e7" />
+
 
 
 # Script List
