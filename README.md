@@ -3,12 +3,21 @@ Miscellaneous one-off userstyles & appearance-modifying userscripts for Flight R
 
 **I do not and WILL NOT write scripts that automate gameplay and/or scrape other site pages for data.** Any scripts I create are purely for QoL and/or aesthetic purposes, and can be achieved entirely through gathering info from and manipulating the DOM of the single page they are loaded on.
 
-All styles will be hosted here in this repo, and mirrors are available via my [Userstyles.World Account.](https://userstyles.world/user/meow)\
-All USO Versions of these styles are considered **abandoned.**
+### Notes:
+- I develop primarily in Firefox on a desktop PC. Run at your own risk in mobile browsers, I have no way of verifying if these work there.
+- All styles & scripts will be hosted here in this repo, and mirrors are available via [Userstyles.World](https://userstyles.world/user/meow) (styles) and [Greasyfork](https://greasyfork.org/en/users/1510062-dragonjpg) (scripts).
+- All USO mirrors of these styles are considered **abandoned.**
+- **Please open an issue if you encounter any bugs and I will do my best to address them.**
 
-| Quick Nav 	|
-|---	|
-| 1. [Styles](#style-list)<br>2. [Scripts](#script-list) 	|
+-----
+
+## Table of Contents:
+
+| [**Styles**](#style-list) 	|  [**Scripts**](#script-list)	|
+|-------|-------|
+| <ol><li>[Arlos Plot Focuser](#1-arlos-plot-focuser)</li><li>[Scry Dresser](#2-scry-dresser)</li><li>[AH Sell & Item Select Popup Filter](#3-ah-sell--item-select-popup-filter)</li><li>[Compact Auction House](#4-compact-auction-house)</li></ol>|  <ol><li>[More Dragon Share Widgets](#1-more-dragon-share-widgets)</li><li>[Morphology Widget](#2-morphology-widget)</li><li>[Quick Ping](#3-quick-ping)</li><li>[More BBCode Buttons](#4-more-bbcode-buttons)</li><li>[Better Scrying Workshop](#5-better-scrying-workshop)</li><li>[AH Additional Dragon Info](#6-ah-additional-dragon-info)</li><li>[Forum & BBCode Tweaks](#7-forum--bbcode-tweaks)</li><li>[Breeding Lock](#8-breeding-lock)</li></ol>	|
+
+-----
 
 # Style List
 ## 1. Arlo's Plot Focuser
@@ -163,8 +172,8 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 - Blocked posts and posts made by you are unaffected.
 
 ## 4. More BBCode Buttons
-**Last Updated:** 2025-09-05\
-**Current Version:** 1.0.1\
+**Last Updated:** 2025-10-15\
+**Current Version:** 1.0.2\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-bbcode-buttons.user.js)
 - Greasyfork Mirror
@@ -222,8 +231,8 @@ Add labels for dragon colors, g1 status (optional), double color patterns (optio
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/2fbd7ada-5a47-48ff-b7bb-012f50b9fa29" />
 
 ## 7. Forum & BBCode Tweaks
-**Last Updated:** 2025-09-17\
-**Current Version:** 1.0.0\
+**Last Updated:** 2025-10-15\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/forum-and-bbcode-tweaks.user.js)
 - [Greasyfork Mirror](https://greasyfork.org/en/scripts/549883-flight-rising-forum-bbcode-tweaks)
@@ -239,7 +248,8 @@ A fairly chunky QoL script for the forums. Includes slightly updated versions of
 - **BACKUPS!** Export/Import settings in JSON format. Can be found in the settings modal.
 
 ### TODO:
-- Eventually planning to add the ability to rearrange the order of bookmarks and starred threads. For now, you will have to rearrange them via the export/import function. Sorry!
+- Currently working on adding **User Notes**, which will allow you to give short labels to users that will be able to be accessed in the forums or on their profiles. Useful for remembering why you blocked someone, etc.
+- Eventually planning to add the ability to rearrange the order of bookmarks and starred threads. For now, you will have to rearrange them via the export/import function or by re-bookmarking in the order you want them to appear. Sorry!
 
 ### Notes:
 - **NO scraping of other pages occurs.** All information is gathered from the page the script is on and your browser's storage. Some examples of note:
@@ -288,7 +298,44 @@ Add Optional Buttons:
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/04a6af7d-3662-4e46-b94c-0c120a89c56e" />\
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/2ff0ba4b-b5b6-4be9-b78e-8c9cdfe097d8" />
 
+## 8. Breeding Lock
+**Last Updated:** 2025-10-15\
+**Current Version:** 1.0.0\
+**Install**:
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/breeding-lock.user.js)
+- [Greasyfork Mirror](/)
 
+Script that allows you to 'lock' dragons, which will prevent them from being able to be selected on the 'open nest' page.
 
+### Features:
+- Dragons now have an icon added next to the Lineage header on their profiles and in the lair footer which indicates their locked status.
+- Automatically prevents selection of locked dragons on the open nest page when a dragon is locked.
+- You will always be able to toggle the lock by clicking on the button on their profile, but there is the optional ability to manage dragons via lair pages by clicking the lair icon under their energy bar. This is enabled by default, but you can disable it in settings if you don't like it.
+- Ability to choose between just disabling locked dragons in the parent dropdowns, or removing them entirely.
+- Ability to unlock dragons in the locked dragon list directly via the settings modal by clicking the X next to their name. Dragons are grouped by gender and ordered by ID for ease of browsing. This is useful if you sold a dragon and forgot to unlock them, as buttons to manage dragons will only appear in your lair/den and on the profiles of dragons you currently own.
+- **Settings Modal:** No coding knowledge needed; customize the script by clicking the button that's present on the nesting grounds and toggling the buttons.
+- **BACKUPS!** Export/Import settings in JSON format. Can be found in the settings modal.
 
+### Notes:
+- Mutation Observers makes this work. The observer runs the function when the select element is changed from disabled to enabled, which occurs after the site is finished modifying the options list, and does nothing with other events.
+- I haven't had any issues with the script's performance when locking over 100 dragons in my lair. However to maximize performance, I would strongly recommend *against* locking dragons in your hibernal den, eternally youthful dragons, dragons you're selling, etc. as these dragons are already prevented from appearing on the nesting page anyways.
 
+### Screenshots:
+
+**Settings can be found on the nesting grounds:**\
+<img width="247" height="158" alt="screenshot of button added to nesting grounds" src="https://github.com/user-attachments/assets/1c4438a0-fac1-4bd3-9d0e-abd6dcd34d99" />\
+<img width="432" height="608" alt="screenshot of the settings modal" src="https://github.com/user-attachments/assets/9ffdeb04-c4c3-49a5-979c-b273228d8578" />
+
+**Dragons in the lair are given a lair icon indicating their locked status:**\
+<img width="187" height="82" alt="Lair icon locked" src="https://github.com/user-attachments/assets/d7615d77-85ad-4a6c-821d-1f7751d7c79e" /> 
+<img width="188" height="80" alt="Lair icon unlocked" src="https://github.com/user-attachments/assets/12b735e6-8d00-40cf-aa59-4c82d53d3971" />
+
+**A button to lock and unlock dragons is added to dragon profiles...**\
+<img width="272" height="109" alt="Toggle button with tooltip showing the dragon is unlocked for breeding." src="https://github.com/user-attachments/assets/ce9c0eb9-44b0-4932-9730-877b9d4388f0" /> 
+<img width="196" height="119" alt="Active breeding button with tooltip that links to the open nest page with this dragon automatically selected as a parent." src="https://github.com/user-attachments/assets/0684195d-8559-470e-b1da-b88c1b0280c0" />\
+**...and when a dragon is locked, it will also disable the breed button:**\
+<img width="275" height="153" alt="Toggle button with tooltip showing the dragon is locked from breeding." src="https://github.com/user-attachments/assets/216ffa2b-7431-409c-8b18-b651e1a6a5f3" /> 
+<img width="203" height="143" alt="Disabled breeding button with tooltip indicating the dragon is locked." src="https://github.com/user-attachments/assets/1e07b73d-8293-4262-9dce-71941567ddf5" />
+
+**When opening a nest, locked dragons will be either disabled from being selected (left, default option) or removed entirely (right, must be enabled in settings):**\
+<img width="181" height="594" alt="Dad select dropdown showing locked dragons have been disabled and are unable to be selected as parents" src="https://github.com/user-attachments/assets/3ebe6003-988d-4893-bc37-8d9f5ac24618" /> <img width="181" height="322" alt="Dad select dropdown showing that locked dragons have been completely removed from the list of available parents" src="https://github.com/user-attachments/assets/6d9a57ca-d642-4b19-a8ad-5bd0e5186067" />

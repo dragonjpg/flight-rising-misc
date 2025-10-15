@@ -8,7 +8,7 @@
 // @match       https://*.flightrising.com/forums*
 // @match       https://*.flightrising.com/msgs/*
 // @grant       none
-// @version     1.0.0
+// @version     1.0.1
 // @license     MIT
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // ==/UserScript==
@@ -164,6 +164,13 @@ function loadSettingsAndThreadTracker() {
       background: rgba(0,0,0,0.5);
       outline: none;
       border: none;
+    }
+    .ui-modal-content {
+      position: relative;
+      border: 0;
+      padding: .5em 1em;
+      background: none;
+      overflow: auto;
     }
     .bbcode-modal {
       position: absolute;
@@ -1079,7 +1086,7 @@ function createForumControlsModal(name, title, content, style = "") {
   modal.style = style;
   modal.innerHTML = `<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix"><span id="ui-bbcode-${name}" class="ui-dialog-title">${title}</span>
     </div>
-  <div class="ui-dialog-content ui-widget-content">
+  <div class="ui-modal-content ui-widget-content">
   </div>
   `;
   modal.querySelector(".ui-widget-content").innerHTML = content;

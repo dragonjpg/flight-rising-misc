@@ -8,7 +8,7 @@
 // @match       https://*.flightrising.com/forums*
 // @match       https://*.flightrising.com/msgs/*
 // @grant       none
-// @version     1.0.1
+// @version     1.0.2
 // @license     MIT
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // ==/UserScript==
@@ -129,6 +129,13 @@
         z-index: -1;
         border: none;
       }
+      .ui-modal-content {
+        position: relative;
+        border: 0;
+        padding: .5em 1em;
+        background: none;
+        overflow: auto;
+      }
       .bbcode-settings-modal {
         position: absolute;
         width: 240px;
@@ -185,7 +192,7 @@
       settings_modal.setAttribute("aria-labeled-by","ui-bbcode-settings");
       settings_modal.innerHTML = `<div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix"><span id="ui-bbcode-settings" class="ui-dialog-title">More BBCode Buttons Settings</span>
         </div>
-      <div class="ui-dialog-content ui-widget-content">
+      <div class="ui-modal-content ui-widget-content">
         <div class="common-dialog-section" id="bbcode-tag-list"><p>Enable Buttons:</p><div class="tags"></div></div>
       </div>
     `;
