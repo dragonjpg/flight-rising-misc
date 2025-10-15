@@ -289,7 +289,10 @@ Add Optional Buttons:
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/04a6af7d-3662-4e46-b94c-0c120a89c56e" />\
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/2ff0ba4b-b5b6-4be9-b78e-8c9cdfe097d8" />
 
-
-
-
+## 7. Forum & BBCode Tweaks
+**Last Updated:** 2025-10-15\
+**Current Version:** 1.0.0\
+**Install**:
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/breeding-lock.user.js)
+- [Greasyfork Mirror](/)
 
