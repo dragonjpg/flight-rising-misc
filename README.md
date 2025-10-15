@@ -172,8 +172,8 @@ Adds a button to the post controls that functions like Quick Quote but for pings
 - Blocked posts and posts made by you are unaffected.
 
 ## 4. More BBCode Buttons
-**Last Updated:** 2025-09-05\
-**Current Version:** 1.0.1\
+**Last Updated:** 2025-10-15\
+**Current Version:** 1.0.2\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/more-bbcode-buttons.user.js)
 - Greasyfork Mirror
@@ -232,8 +232,8 @@ Add labels for dragon colors, g1 status (optional), double color patterns (optio
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/2fbd7ada-5a47-48ff-b7bb-012f50b9fa29" />
 
 ## 7. Forum & BBCode Tweaks
-**Last Updated:** 2025-09-17\
-**Current Version:** 1.0.0\
+**Last Updated:** 2025-10-15\
+**Current Version:** 1.0.1\
 **Install**:
 - [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/forum-and-bbcode-tweaks.user.js)
 - [Greasyfork Mirror](https://greasyfork.org/en/scripts/549883-flight-rising-forum-bbcode-tweaks)
@@ -249,7 +249,8 @@ A fairly chunky QoL script for the forums. Includes slightly updated versions of
 - **BACKUPS!** Export/Import settings in JSON format. Can be found in the settings modal.
 
 ### TODO:
-- Eventually planning to add the ability to rearrange the order of bookmarks and starred threads. For now, you will have to rearrange them via the export/import function. Sorry!
+- Currently working on adding **User Notes**, which will allow you to give short labels to users that will be able to be accessed in the forums or on their profiles. Useful for remembering why you blocked someone, etc.
+- Eventually planning to add the ability to rearrange the order of bookmarks and starred threads. For now, you will have to rearrange them via the export/import function or by re-bookmarking in the order you want them to appear. Sorry!
 
 ### Notes:
 - **NO scraping of other pages occurs.** All information is gathered from the page the script is on and your browser's storage. Some examples of note:
