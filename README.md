@@ -15,7 +15,7 @@ Miscellaneous one-off userstyles & appearance-modifying userscripts for Flight R
 
 | [**Styles**](#style-list) 	|  [**Scripts**](#script-list)	|
 |-------|-------|
-| <ol><li>[Arlos Plot Focuser](#1-arlos-plot-focuser)</li><li>[Scry Dresser](#2-scry-dresser)</li><li>[AH Sell & Item Select Popup Filter](#3-ah-sell--item-select-popup-filter)</li><li>[Compact Auction House](#4-compact-auction-house)</li></ol>|  <ol><li>[More Dragon Share Widgets](#1-more-dragon-share-widgets)</li><li>[Morphology Widget](#2-morphology-widget)</li><li>[Quick Ping](#3-quick-ping)</li><li>[More BBCode Buttons](#4-more-bbcode-buttons)</li><li>[Better Scrying Workshop](#5-better-scrying-workshop)</li><li>[AH Additional Dragon Info](#6-ah-additional-dragon-info)</li><li>[Forum & BBCode Tweaks](#7-forum--bbcode-tweaks)</li><li>[Breeding Lock](#8-breeding-lock)</li></ol>	|
+| <ol><li>[Arlos Plot Focuser](#1-arlos-plot-focuser)</li><li>[Scry Dresser](#2-scry-dresser)</li><li>[AH Sell & Item Select Popup Filter](#3-ah-sell--item-select-popup-filter)</li><li>[Compact Auction House](#4-compact-auction-house)</li></ol>|  <ol><li>[More Dragon Share Widgets](#1-more-dragon-share-widgets)</li><li>[Morphology Widget](#2-morphology-widget)</li><li>[Quick Ping](#3-quick-ping)</li><li>[More BBCode Buttons](#4-more-bbcode-buttons)</li><li>[Better Scrying Workshop](#5-better-scrying-workshop)</li><li>[AH Additional Dragon Info](#6-ah-additional-dragon-info)</li><li>[Forum & BBCode Tweaks](#7-forum--bbcode-tweaks)</li><li>[Breeding Lock](#8-breeding-lock)</li><li>[DB Skins QoL](#9-database-skins-qol)</li></ol>	|
 
 -----
 
@@ -339,3 +339,21 @@ Script that allows you to 'lock' dragons, which will prevent them from being abl
 
 **When opening a nest, locked dragons will be either disabled from being selected (left, default option) or removed entirely (right, must be enabled in settings):**\
 <img width="181" height="594" alt="Dad select dropdown showing locked dragons have been disabled and are unable to be selected as parents" src="https://github.com/user-attachments/assets/3ebe6003-988d-4893-bc37-8d9f5ac24618" /> <img width="181" height="322" alt="Dad select dropdown showing that locked dragons have been completely removed from the list of available parents" src="https://github.com/user-attachments/assets/6d9a57ca-d642-4b19-a8ad-5bd0e5186067" />
+
+## 9. Database Skins QoL
+**Last Updated:** 2025-11-12\
+**Current Version:** 1.0.0\
+**Install**:
+- [Via Github](https://github.com/dragonjpg/flight-rising-misc/raw/refs/heads/main/scripts/db-skins-qol.user.js)
+- [Greasyfork Mirror](/)
+
+### Features:
+
+- Player's Username now links to their clan profile instead of a database search for their skins
+- 'Player Accent/Skin' label is now the link to the database search for more skins by the user
+- Adds a link to the transparent skin art underneath the skin preview
+
+### Screenshot:
+
+<img width="292" height="555" alt="image" src="https://github.com/user-attachments/assets/c4af5816-5418-4b04-81cb-edf619c168b5" />
+
