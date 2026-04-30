@@ -8,7 +8,7 @@
 // @match       https://*.flightrising.com/forums*
 // @match       https://*.flightrising.com/msgs/*
 // @grant       none
-// @version     1.0.1
+// @version     1.0.2
 // @license     MIT
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // ==/UserScript==
@@ -122,6 +122,8 @@ function FBTinit() {
     repeat = true;
   }
 
+  appendCSS();
+
   if (window.location.href.match("flightrising.com/forums")) {
     let add_more_actions = localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-more-post-actions`),
         forum_search_link = localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-forum-search-link`);
@@ -130,209 +132,22 @@ function FBTinit() {
     if (add_more_actions == "true" || forum_search_link == "true") { morePostActions(document.querySelectorAll(".post .post-frame"), add_more_actions, forum_search_link); }
   }
   bbcodeButtons(textarea_to_affect, element_to_wait_for, repeat, recursive_condition_to_wait_for);
+  //userNotes();
 }
 
 // GENERAL FORUMS SETTINGS / THREAD TRACKER
 function loadSettingsAndThreadTracker() {
 
   // thread tracker gets added to pages of forums where forum control bar is present
-  if (document.querySelector("#forum-controls")) {
+  if (document.querySelector("#forum-controls") || document.querySelector("#forum-actions")) {
     console.log("\t[F&BT] ADD THREAD TRACKER BUTTON");
-    const head = document.head || document.getElementsByTagName('head')[0],
-      style = document.createElement('style');
-    let css = `
-    .bbcode-button {
-      padding: 0;
-      height: 47px;
-      width: 47px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 5;
-      cursor: pointer;
-    }
-    .bbcode-modal:not(.hide) + .bbcode-button.modal {
-      z-index: 11;
-    }
-    .bbcode-modal:not(.hide) + .bbcode-button.modal::before {
-      content: '';
-      position:fixed;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: rgba(0,0,0,0.5);
-      outline: none;
-      border: none;
-    }
-    .ui-modal-content {
-      position: relative;
-      border: 0;
-      padding: .5em 1em;
-      background: none;
-      overflow: auto;
-    }
-    .bbcode-modal {
-      position: absolute;
-      width: var(--width, 250px);
-      min-height: 200px;
-      z-index: 101;
-      top: 50px;
-      box-sizing: border-box;
-      left: var(--left, -50%);
-    }
-    .bbcode-modal .ui-widget-content h3:first-child {
-      margin-top: 0;
-    }
-    .bbcode-modal img {
-      vertical-align: middle;
-      border: 1px solid var(--borders, #ccc);
-      margin-left: 0.5em;
-    }
-    .bbcode-modal a {
-      color: var(--link, #731d08)
-    }
-    .check-list, .button-list {
-      display: grid;
-      text-align: left;
-      grid-gap: 0.5em;
-      margin: 0.8em 0 0.5em;
-    }
-    .col-2 {
-      grid-template-columns: 1fr 1fr;
-    }
-    .check-list label {
-      display: grid;
-      grid-template-columns: 25px auto;
-      align-items: center;
-    }
-    .button-list {
-      flex-wrap: wrap;
-    }
-    .threads {
-      margin: 10px 0 10px 5px;
-      max-height: 16em;
-      overflow: auto;
-      padding-right: 0.6em;
-    }
-    .threads li {
-      display: flex;
-      margin-bottom: 0.5em;
-    }
-    .threads li::before {
-      content: '•' / '';
-      margin-right: 5px;
-    }
-    .threads li i {
-      margin-left: auto;
-    }
-    .threads li > a, .threads li > i {
-      text-overflow: ellipsis;
-      display: inline-block;
-      overflow-x: hidden;
-      white-space: pre;
-      line-height: 1.3em;
-      max-width: 100%;
-    }
-    .threads.show-authors li > a {
-      max-width: 70%;
-    }
-    .threads.show-authors li > i {
-      max-width: 30%;
-    }
-    button.rmv-setting {
-      padding: 0.5em !important;
-      width: 100%;
-    }
-    .rmv-bookmark {
-      margin-left: auto;
-      color: rgba(var(--error, 150, 0, 0),0.3);
-      background: none;
-      border: none;
-      position: relative;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s color;
-    }
-    .rmv-bookmark:hover {
-      color: rgba(var(--error, 150, 0, 0),1);
-    }
-    .rmv-bookmark.tipsy::after {
-      font-weight: normal;
-      left: unset;
-      right: 1em;
-      top: -0.3em;
-      min-width: 25px;
-    }
-    .threads.show-authors li > i + .rmv-bookmark {
-      margin-left: 0.4em
-    }
-    #backup-zone #data {
-      grid-column: 1 / 3;
-      resize: none;
-      height: 150px;
-      width: 100%;
-      font-size: 10px;
-      font-family: monospace;
-    }
-    .expand-setting {
-      cursor: pointer;
-      background: none;
-      border: none;
-      color: inherit;
-      font: inherit;
-      display: inline-flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .expand-setting span {
-      margin-left: auto;
-    }
-    .expand {
-      max-height: 0px;
-      overflow: hidden;
-      transition: max-height 0.3s, opacity: 0.3s;
-    }
-    .expand.expanded {
-      max-height:500px;
-      opacity: 1;
-    }
-    .expander :is(.on,.off) {
-      pointer-events: none;
-    }
-    .post-action-quick-ping.tipsy::after { top: calc(100% + 6px); left: calc(50% - 40px); }
-    .post-action-quick-ping:hover::after, .post-action-quick-ping:focus::after { display: block; }
-    .thread-locked { pointer-events: none !important; user-select: none; opacity: 0.5; }
-    .tipsy::after {
-      content: attr(data-tipsy); min-width: 150px; max-width: 300px; height: auto; line-height: 120%;
-      font-size: 1rem; color: var(--text, #000); background: var(--tooltip-bg, #fff); border-radius: 10px;
-      font-size: inherit; position: absolute; border:1px solid var(--borders, #888);box-shadow:rgba(0, 0, 0, 0.5) 1px 1px 6px;
-      top: 112%; left: calc(50% - 100px); padding: 8px; box-sizing: border-box; z-index: 2;right:unset;bottom:unset;
-      text-align: left;
-      display: none;
-    }
-    .tipsy:hover::after { display: block !important; }
-    .bbcode-modal:not(.hide) + .bbcode-button.modal::after { display: none !important; }
-    .threads:empty::before { content: "No threads found."; display: block; font-style: italic; margin-bottom: 1.2em; }
-    .toggled[data-toggled="0"] .on { display: none; }
-    .toggled[data-toggled="1"] .off { display: none; }
-    .hide {
-      display: none !important;
-    }
-    `;
-    if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-more-post-actions`) == "true") {
-      css += `
-      .post-frame {
-        min-height: 330px;
-      }`;
-    }
-
-    head.appendChild(style);
-    style.type = 'text/css';
-    style.appendChild(document.createTextNode(css));
 
     var forum_controls = document.querySelector("#forum-controls"),
         subscribe_button = document.querySelector("span:has(#toggle-subscribe)");
+
+    if (forum_controls == null) {
+      forum_controls = document.querySelector("#forum-actions");
+    }
 
     // create thread tracker modal + button
     var threads_modal = createForumControlsModal("threads",`Thread Tracker`,`<div class="common-dialog-section" id="bbcode-threads"><div id="bookmarked"><h3>Bookmarked:</h3><ul class="threads"></ul></div><div id="starred"></div></div>`,`--left: -80%; width: 425px;`),
@@ -348,7 +163,7 @@ function loadSettingsAndThreadTracker() {
     threads_button.before(threads_modal); // its associated modal goes directly before it
 
     // ADD SETTINGS BUTTON - only applies to forum landing page
-    if (document.querySelector(`#forum-header[data-level="forum"]`)) {
+    if (document.querySelectorAll(`.breadcrumbs a`).length == 1) {
       console.log("\t[F&BT] ON FORUM INDEX, ADD SETTINGS BUTTON");
       var settings_modal =  createForumControlsModal("settings", `Forum & BBCode Tweaks Script Settings`, `<div class="common-dialog-section" id="settings-list"><h3>Thread Tracker:</h3><div id="tracker-settings" class="check-list"></div><h3>Miscellaneous:</h3><div id="misc-settings" class="check-list"></div><h3>Additional BBCode Buttons:</h3><div id="tags" class="check-list col-2"></div><h3><button class="expand-setting expander toggled" data-target="#backup-zone" data-toggled="0">Backups: <span class="off">☰</span><span class="on">✕</span></h3><div id="backup-zone" class="button-list col-2 expand"></div><h3><button class="expand-setting expander toggled" data-target="#danger-zone" data-toggled="0">Reset: <span class="off">☰</span><span class="on">✕</span></h3><div id="danger-zone" class="button-list col-2 expand"></div></div>`,`--width: 350px;`),
         settings_button =  createForumControlsButton("settings", `Tap this button to adjust Forum & BBCode Tweaks Script Settings.`, settings_modal, ASSETS.settings);
@@ -672,7 +487,7 @@ function loadTrackedThreads() {
 function threadWatcher(event, type) {
   var url_splice = window.location.href.split(".com/")[1],
       subsplice = url_splice.split("/"),
-      author = (subsplice.length == 3 || (subsplice.length > 3 && subsplice[3] == 1)) ? document.querySelector(".post-author-username") : "",
+      author = (subsplice.length == 3 || (subsplice.length > 3 && subsplice[3] == 1)) ? document.querySelector(".post-author-username-hidden a") : "",
       topic = document.querySelector("#topic-header strong").innerText,
       topic_id = subsplice[2],
       thread_link = `/${subsplice[0]}/${subsplice[1]}/${subsplice[2]}`,
@@ -735,7 +550,7 @@ function quickPing(posts) {
     // loop thru posts, skipping blocked posts or our own posts
     posts.forEach((post) => {
         //skip our own posts or blocked posts
-        if (post.querySelector(".post-author-username") == null) {
+        if (post.querySelector(".post-author-username-hidden a") == null) {
             //console.log("\t\t[F&BT] Quick Ping: Blocked post, skipping");
         } else if (post.querySelector(".post-author-actions") == null) {
             //console.log("\t\t[F&BT] Quick Ping: It's your post, skipping");
@@ -748,7 +563,7 @@ function quickPing(posts) {
             var copiedPingButton = pingButton.cloneNode(true);
 
             // set data-name & title
-            copiedPingButton.setAttribute("data-name",post.querySelector(".post-author-username").innerText);
+            copiedPingButton.setAttribute("data-name",post.querySelector(".post-author-username-hidden a").innerText);
             copiedPingButton.setAttribute("data-tipsy",`Click to ping ${copiedPingButton.getAttribute("data-name")} in a quick reply.`);
 
             // add the button to the page and insert it into the post header after the quote button
@@ -777,17 +592,22 @@ function quickPing(posts) {
     console.log("\t[F&BT] Quick Ping: Done!");
   }
 }
+
+// ----------------------------------------------- //
+//               MORE POST ACTIONS                 //
+// ----------------------------------------------- //
+
 function morePostActions(posts, add_more_actions, forum_search_link) {
   posts.forEach(post => {
-    if (post.querySelector(".post-author-username") != null) {
+    if (post.querySelector(".post-author-username-hidden a") != null) {
 
       let stats = post.querySelector(".post-author-stats"),
-          author = post.querySelector(".post-author-username").innerText;
+          author = post.querySelector(".post-author-username-hidden a").innerText;
 
       // optional begin a forum search link
       if (forum_search_link == "true") {
         let post_count_stat = stats.querySelector(`.post-author-stat[data-stat="post"]`);
-        post_count_stat.innerHTML = `<a href="https://${window.location.hostname}/search/forums?poster=${author}&sort=recent&submit=Search%2BForums" class="post-stat-count" title="Recent Posts by ${author}">${post_count_stat.querySelector(".post-stat-count").innerText}</a>`;
+        post_count_stat.innerHTML = `<a href="https://${window.location.hostname}/search/forums?poster=${author}&sort=recent&submit=Search%2BForums" class="post-stat-count" title="Recent posts by ${author}" rel="noreferrer">${post_count_stat.querySelector(".post-stat-count").innerText}</a>`;
       }
       // add additional posts actions, skipping admins
       if (add_more_actions == "true" && !post.parentNode.classList.contains("post-admin")) {
@@ -798,37 +618,71 @@ function morePostActions(posts, add_more_actions, forum_search_link) {
         dragon = dragon[dragon.length-1].replace("p.png","")
         avvie.setAttribute("data-stat","avatar-dragon");
         den.setAttribute("data-stat","den");
-        avvie.innerHTML = `<a href="https://${window.location.hostname}/dragon/${dragon}" title="Avatar Dragon"><img src="/static/cms/icons/171.png"></a>`;
-        den.innerHTML = `<a href="${den_link}" title="Hibernal Den"><img src="/static/cms/icons/10.png"></a>`;
+        avvie.innerHTML = `<a href="https://${window.location.hostname}/dragon/${dragon}" title="Avatar Dragon" rel="noreferrer"><img src="/static/cms/icons/171.png"></a>`;
+        den.innerHTML = `<a href="${den_link}" title="Hibernal Den" rel="noreferrer"><img src="/static/cms/icons/10.png"></a>`;
         stats.append(avvie,den);
       }
     }
   })
 }
 
-// function to wait until an element exists to start doing things
-// FROM: https://stackoverflow.com/a/61511955
-function waitForElement(selector) {
-  console.log(`\t[F&BT] Waiting for '${selector}'...`);
+// ----------------------------------------------- //
+//                 USER NOTES                      //
+// ----------------------------------------------- //
 
-  return new Promise(resolve => {
-      if (document.querySelector(selector)) {
-          return resolve(document.querySelector(selector));
-      }
+function userNotes() {
+  let noteButtonBase = document.createElement("span");
+  noteButtonBase.innerHTML = `<img src="/static/cms/icons/71.png"/>`;
+  noteButtonBase.classList = 'user-note-button tipsy';
+  noteButtonBase.setAttribute("aria-role","button");
+  noteButtonBase.setAttribute("data-tipsy","You don't have a note for this user. Click to add a note.");
 
-      const observer = new MutationObserver(mutations => {
-        // if it aint there we observe until it is
-          if (document.querySelector(selector)) {
-              observer.disconnect();
-              resolve(document.querySelector(selector)); // returns the element for us to do stuff with once it shows up
-          }
+  if (/clan-profile/.test(window.location.href)) {
+    if (document.querySelector('.clan-profile-user-frame')) {
 
-      });
-      observer.observe(document.body, {
-          childList: true,
-          subtree: true
-      });
-  });
+    } else {
+      // must be blocked or have been blocked
+      noteButtonBase.classList.add("absolute");
+      let blocked_msg = document.querySelector("#clan-profile > .common-message"),
+          username = document.querySelector(`.breadcrumbs a[href*="clan-profile"]`).innerText,
+          user_id = document.querySelector(`.breadcrumbs a[href*="clan-profile"]`).href.split("/"),
+          your_note = document.createElement("div");
+      user_id = user_id[user_id.length-1];
+      console.log(`${username} #${user_id}`);
+      blocked_msg.after(your_note);
+      your_note.classList = 'common-message common-message-info common-message-small user-note';
+      your_note.innerHTML = `<b>Your Note for ${username}:</b> <p class="user-note-content"></p>`;
+      your_note.append(noteButtonBase.cloneNode(true));
+      your_note.querySelector(`.user-note-button`).setAttribute("data-tipsy","Click to Edit Note");
+      // load notes, find matching by ID & add the note to the page
+      // update username in data if it doesn't match last known username. tracking because it makes exports more human-readable + also because blocked posts don't link to the clan profile
+      // set up edit button to make a modal that lets you add and save a note about a user.
+    }
+  }
+   else if (window.location.href.match("flightrising.com/forums")) {
+     noteButtonBase.classList.add("not-found");
+     let posts = document.querySelectorAll(".post .post-frame");
+     posts.forEach(post => {
+       if (post.parentNode.classList.contains('blocked-post')) {
+            let userNoteButton = noteButtonBase.cloneNode(true),
+              username = post.querySelector(`.post-text-content > strong`).innerText;
+         userNoteButton.classList.add("absolute");
+         userNoteButton.setAttribute("data-target",username);
+         post.querySelector('.post-author').append(userNoteButton);
+
+       } else if (!(post.querySelector('.post-author-username') == null || post.querySelector(".post-author-actions") == null)) {
+         // not your post or blocked post
+         let userNoteButton = noteButtonBase.cloneNode(true),
+             username = post.querySelector('.post-author-username').innerText,
+             user_id = post.querySelector('.post-author-username').href.split("/");
+         user_id = user_id[user_id.length-1];
+         userNoteButton.setAttribute("data-target",user_id);
+         post.querySelector('.post-author-actions').append(userNoteButton);
+         // find user in usernotes by id
+         // update tipsy value with the note if found and remove not-found class
+       }
+     });
+   }
 }
 
 
@@ -839,11 +693,13 @@ function waitForElement(selector) {
 function firstRun() {
   if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-starred`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-starred`,"[]"); console.log("\t\t\t[F&BT] Created local storage for starred threads")};
   if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-bookmarks`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-bookmarks`,"[]");  console.log("\t\t\t[F&BT] Created local storage for bookmarked threads")};
+  if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-user-notes`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-user-notes`,"[]");  console.log("\t\t\t[F&BT] Created local storage for user notes.")};
   if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-show-authors`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-show-authors`,"true");  console.log("\t\t\t[F&BT] Initialized default value for showing thread authors")};
   if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-star-tracker`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-star-tracker`,"true");  console.log("\t\t\t[F&BT] Initialized default value for tracking starred threads")};
   if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-ping-autofocus`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-ping-autofocus`,"true");  console.log("\t\t\t[F&BT] Initialized default value for quick ping autofocus")};
   if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-more-post-actions`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-more-post-actions`,"true");  console.log("\t\t\t[F&BT] Initialized default value for additional user buttons in forum posts.")};
   if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-forum-search-link`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-forum-search-link`,"true");  console.log("\t\t\t[F&BT] Initialized default value for author forum search link.")};
+  if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-enable-user-notes`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-enable-user-notes`,"true");  console.log("\t\t\t[F&BT] Initialized default value for enabling user notes.")};
   BBCODE_TAG_LIST.forEach(tag => {
     if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-${tag.tag}`) == null) { localStorage.setItem(`${LOCAL_STORAGE_PREFIX}-${tag.tag}`,"true"); console.log(`\t\t\t[F&BT] Initialized default value for ${tag.tag} button`)}
   });
@@ -1074,8 +930,251 @@ function backup(action) {
 
 
 // ----------------------------------------------- //
-//               MODALS N BUTTONS                  //
+//             MODALS/BUTTONS & ETC.               //
 // ----------------------------------------------- //
+
+function appendCSS() {
+  const head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+    let css = `
+    .clan-profile-user-frame {
+      position: relative;
+    }
+    .bbcode-button {
+      padding: 0;
+      height: 47px;
+      width: 47px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 5;
+      cursor: pointer;
+    }
+    .bbcode-modal:not(.hide) + .bbcode-button.modal {
+      z-index: 11;
+    }
+    .bbcode-modal:not(.hide) + .bbcode-button.modal::before {
+      content: '';
+      position:fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: rgba(0,0,0,0.5);
+      outline: none;
+      border: none;
+    }
+    .ui-modal-content {
+      position: relative;
+      border: 0;
+      padding: .5em 1em;
+      background: none;
+      overflow: auto;
+    }
+    .bbcode-modal {
+      position: absolute;
+      width: var(--width, 250px);
+      min-height: 200px;
+      z-index: 101;
+      top: 50px;
+      box-sizing: border-box;
+      left: var(--left, -50%);
+    }
+    .bbcode-modal .ui-widget-content h3:first-child {
+      margin-top: 0;
+    }
+    .bbcode-modal img {
+      vertical-align: middle;
+      border: 1px solid var(--borders, #ccc);
+      margin-left: 0.5em;
+    }
+    .bbcode-modal a {
+      color: var(--link, #731d08)
+    }
+    .check-list, .button-list {
+      display: grid;
+      text-align: left;
+      grid-gap: 0.5em;
+      margin: 0.8em 0 0.5em;
+    }
+    .col-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .check-list label {
+      display: grid;
+      grid-template-columns: 25px auto;
+      align-items: center;
+    }
+    .button-list {
+      flex-wrap: wrap;
+    }
+    .threads {
+      margin: 10px 0 10px 5px;
+      max-height: 16em;
+      overflow: auto;
+      padding-right: 0.6em;
+    }
+    .threads li {
+      display: flex;
+      margin-bottom: 0.5em;
+    }
+    .threads li::before {
+      content: '•' / '';
+      margin-right: 5px;
+    }
+    .threads li i {
+      margin-left: auto;
+    }
+    .threads li > a, .threads li > i {
+      text-overflow: ellipsis;
+      display: inline-block;
+      overflow-x: hidden;
+      white-space: pre;
+      line-height: 1.3em;
+      max-width: 100%;
+    }
+    .threads.show-authors li > a {
+      max-width: 70%;
+    }
+    .threads.show-authors li > i {
+      max-width: 30%;
+    }
+    button.rmv-setting {
+      padding: 0.5em !important;
+      width: 100%;
+    }
+    .rmv-bookmark {
+      margin-left: auto;
+      color: rgba(var(--error, 150, 0, 0),0.3);
+      background: none;
+      border: none;
+      position: relative;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s color;
+    }
+    .rmv-bookmark:hover {
+      color: rgba(var(--error, 150, 0, 0),1);
+    }
+    .rmv-bookmark.tipsy::after {
+      font-weight: normal;
+      left: unset;
+      right: 1em;
+      top: -0.3em;
+      min-width: 25px;
+    }
+    .threads.show-authors li > i + .rmv-bookmark {
+      margin-left: 0.4em
+    }
+    #backup-zone #data {
+      grid-column: 1 / 3;
+      resize: none;
+      height: 150px;
+      width: 100%;
+      font-size: 10px;
+      font-family: monospace;
+    }
+    .expand-setting {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      display: inline-flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .expand-setting span {
+      margin-left: auto;
+    }
+    .expand {
+      max-height: 0px;
+      overflow: hidden;
+      transition: max-height 0.3s, opacity: 0.3s;
+    }
+    .expand.expanded {
+      max-height:500px;
+      opacity: 1;
+    }
+    .expander :is(.on,.off) {
+      pointer-events: none;
+    }
+    .user-note-button {
+      position: relative;
+      cursor: pointer;
+      z-index: 2;
+      flex-grow: 1;
+    }
+    .user-note-button img {
+      display: block;
+      margin: 0 auto;
+    }
+    .user-note-button.absolute {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.4rem;
+    }
+    .user-note-button.not-found img {
+      filter: grayscale(100%);
+    }
+    p.user-note-content {
+      padding: 1em;
+    }
+    .user-note-content:empty::after {
+      content: 'You do not have a note for this user.';
+      font-style: italic;
+    }
+    .common-message-info.user-note {
+      background-image: url('/static/layout/clan-profile/bio-background.png');
+      background-size: 150px;
+      background-position: 0px 15%;
+      position: relative;
+    }
+    div.post-author { z-index: 2; }
+    .post-action-quick-ping.tipsy::after { top: calc(100% + 6px); left: calc(50% - 40px); }
+    .post-action-quick-ping:hover::after, .post-action-quick-ping:focus::after { display: block; }
+    .thread-locked { pointer-events: none !important; user-select: none; opacity: 0.5; }
+    .user-note-button.tipsy::after { top: unset; bottom: 115%; }
+    .tipsy::after {
+      content: attr(data-tipsy); min-width: 150px; max-width: 300px; height: auto; line-height: 120%;
+      font-size: 1rem; color: var(--text, #000); background: var(--tooltip-bg, #fff); border-radius: 10px;
+      font-size: inherit; position: absolute; border:1px solid var(--borders, #888);box-shadow:rgba(0, 0, 0, 0.5) 1px 1px 6px;
+      top: 112%; left: calc(50% - 100px); padding: 8px; box-sizing: border-box; z-index: 2;right:unset;bottom:unset;
+      text-align: left;
+      display: none;
+    }
+    .tipsy:hover::after { display: block !important; }
+    .bbcode-modal:not(.hide) + .bbcode-button.modal::after { display: none !important; }
+    .threads:empty::before { content: "No threads found."; display: block; font-style: italic; margin-bottom: 1.2em; }
+    .toggled[data-toggled="0"] .on { display: none; }
+    .toggled[data-toggled="1"] .off { display: none; }
+    .hide {
+      display: none !important;
+    }
+    `;
+    if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-more-post-actions`) == "true") {
+      css += `
+      .post-frame {
+        min-height: 330px;
+      }`;
+    }
+  if (localStorage.getItem(`${LOCAL_STORAGE_PREFIX}-enable-user-notes`) == "true") {
+      css += `
+      .post-author-action {
+        width: auto;
+        flex-grow: 1;
+      }
+      .post-author-actions {
+        display: flex;
+        flex-wrap: wrap;
+      }`;
+    }
+
+    head.appendChild(style);
+    style.type = 'text/css';
+    style.id = `${LOCAL_STORAGE_PREFIX}-style`;
+    style.appendChild(document.createTextNode(css));
+}
 
 function createForumControlsModal(name, title, content, style = "") {
   var modal = document.createElement("div");
@@ -1131,7 +1230,7 @@ function createForumToggleButton(name, tooltip, image, toggled_tooltip, toggle_i
 
   btn.innerHTML = `<img src="${image}" role="button" alt="${name} button" class="off"><img src="${toggle_image}" role="button" alt="${name} button" class="on">`;
   btn.addEventListener("click", function(event) {
-    console.log("clicked ${name}");
+    console.log(`clicked ${name}`);
     if (btn.getAttribute("data-toggled") == "0") {
       btn.setAttribute("data-toggled", "1");
       btn.setAttribute("data-tipsy", btn.getAttribute("data-tipsy-1"));
@@ -1141,6 +1240,31 @@ function createForumToggleButton(name, tooltip, image, toggled_tooltip, toggle_i
     }
   });
   return btn;
+}
+
+// function to wait until an element exists to start doing things
+// FROM: https://stackoverflow.com/a/61511955
+function waitForElement(selector) {
+  console.log(`\t[F&BT] Waiting for '${selector}'...`);
+
+  return new Promise(resolve => {
+      if (document.querySelector(selector)) {
+          return resolve(document.querySelector(selector));
+      }
+
+      const observer = new MutationObserver(mutations => {
+        // if it aint there we observe until it is
+          if (document.querySelector(selector)) {
+              observer.disconnect();
+              resolve(document.querySelector(selector)); // returns the element for us to do stuff with once it shows up
+          }
+
+      });
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  });
 }
 
 FBTinit();

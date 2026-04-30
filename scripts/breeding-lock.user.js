@@ -8,7 +8,7 @@
 // @match       https://*.flightrising.com/lair*
 // @match       https://*.flightrising.com/den*
 // @grant       none
-// @version     1.0.0
+// @version     1.0.1
 // @license     MIT
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // ==/UserScript==
@@ -19,16 +19,14 @@
 const F = 1,
       M = 0,
       NBS_ASSETS = {
-        can_breed : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAqNQTFRFAAAAhIB1hIB1hIB1hYF2hYF2hoN2hIB1hIB1hIB1hYB1kYyB5dvR+vPq+fDp49fPiIV1hIB1hIB1hoV2iol21c3Gq6GX5NjI+fDm+vTr69/QsqaXiod3hIB1hIB1hYF2h4V4+vfz9fHqn5KIzb+o4tTB5tbF18iztKiYycO7hYF2hIB1hIB1iIh57+rltaqiqp+Txridw7mXt7CXopiO+fby6+fgiYd2hIB1j4p86uLc1M7GtKmhsKacyMC57Ofiiod3hIB1hIB1hIB1z8fA8Ovm8+/o5NzWr6ifhn9zhIB15dzW8uzn9vXv9/Xwoa+TR2cuI0wGPl0kWGVEf31whIB1hYF27OnixcChvriRwcGhvMWwJE0IKVANPlkmLFQPIUwFWGZEhIB1hYF2v7mn1sau7d7NuKyPy8i3/fz3W3JELU8QfXtcnot6bm9VJksLMVMYhIB1s6eX38265dPAyrmmq6SU+PTtz8nBPFcfRl8ow6yexq2dy7qva21ZZGxRhIB1h4N4p5uTy7Wm79nHvKiXrKWc+vTv9vDra3VUNFcVM1gUbXRNbXRMd4FcTV04PlYoHEEBhIB1gX5xwbSxkIN5q5eKjH502tTP9e/q7ebjHkgBKWMBK2cBKmQBJVkBLGoBJl0BHkcBgnxzopmTzMS+rqWf3tjT9/Hs8+zpHkoBTmUt0r+ySmMvJFkB7eXig310ysG73NPM2tHL4trU5NvV39fRH0oBK2oBZHZF4tLKLUQVJFgBhIB1dGxl2M/Jz8a/zsW+H0sBLm8BLm4BJ1UHbmFeIU0BJlwBhIB1hX92cWljvbSu4tnT5d3XH0wBL3EBKWIBI1MBGz0CdW9mHhMOWE5KcmpkaWBaIkcGI1UBIU8BHEUB////lZSLiYh/l4CBreMNlgAAAOF0Uk5TAILe7/r76g585/T9/v///+h1e97k//////////WVJbz8////////////9VB28////////////+S1+v////////xuGeT//////7hR///////////wQoHy/////////////qdv9v//////////////+ddZ////////////////+JxT6P/////////////////7wWku5P///////////////////9j//////////////wfN/////////////+7/YNj/////////8/j/Bnzh/////////9BscMzp4vv//+kCFhgKeaEyHwAAAM9JREFUeJxjZMACGKEUBPxEEuRghIH3cEEhRgR4DBWUY0QGVyGCOoyMnxn4YIInIYIWjIzPGRikwHqBuvaDBJ2AvDtQt6gC2dtBgl47PRgZr4CEdCEGrAEKhoJZx4GCVhDB+UDBJAhzJ4MH1KoJQMHCT/wg5uowmP2NQMEGRnSQz8gwCVXkHzNjHNCdi8GcJbGMn/+DDPoMFlwPV/VMGkg8BQsy7AVK8zH+Z4LI3IQIngSxX0iChf6fZ4AIMjBcgeqHhKYKNOQZ7gKFFGDRAQCrgSoVqjiWggAAAABJRU5ErkJggg==",
-        cant_breed : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAqZQTFRFAAAAbl1Qbl1Qbl1Qb15Rb15RcF9Rbl1Qbl1Qbl1Qb11QeWZYv5+P0bGg0K+fvZyOcWFQbl1Qbl1QcGFRc2RRspWIj3Vnvp2J0K+d0bGhxKKOlXlnc2JRbl1Qbl1Qb15RcWFS0bSmza+ghWpdq4tzvZqEwJyHs5F7lnpoqI6Ab15Rbl1Qbl1QcWNTx6qdl3xvjnRlpYZro4dnmYBnh29h0LOmxKiZcmJRbl1Qd2RVw6SXsZaIlntuk3lrp4x/xaibc2JRbl1Qbl1Qbl1QrZGDyKudy66fvqCSknptcFxPbl1Qv6CSyqyezbKk0LKkonRqczQqYBwPay0jZj01bVpNbl1Qb15RxaqbpIxun4ZjoYxusId9YR0PYiASZysmZCMUYBwNZj42bl1Qb15Rn4dys5B3xqGMmn1iqZF907epdkE2YSEUfVFEhWVUcEhAXx8RYikfbl1QupV/v5qDqYdyj3dlz7GirZKEZSofbzAko31spX5rqYd3YicdYSIYbl1QcV9Si3FlqYRyx56InXpnkHhr0bGkza+hdUlBayYYayYZfEY9hVBIaSMWZh8SWhISbl1QbFxNoYN5eF9Tj25edVxPtpqOza6gxqebYRcPfCcFfykGfScIciAMgyoJfSgFdSQDYBcObVpPh29lqo+CkXhtuZ2Qzq+iy6yfYhcPfCYIdTQqsop6bzMqcCEGxqebbVtPqYyAuJqMtpiLvZ+Rvp+SupyPYxgPgioGficKgEM5vZmKVB4ZbyAGbl1QYU9FtJeKrZCDrI+CZBgPhywIhiwIbSAPXEdAZRoLdCMDbl1Qb1xRXkxEnoN3vZ6Qv6GTZRkQiS4IeycEbB4IVBIRYlFGGQ4KSTkzX01EWEY+XhgTbR4MZxsLXRQQ1bqvfGxfcmNXfl1YSou4DwAAAOJ0Uk5TAILe7/r76g585/T9/v///+h1e97k//////////WVJbz8////////////9VB28////////////+S1+v////////xuGeT//////7hR///////////wQoHy/////////////qdv9v//////////////+dBZ///////////////94FPo/////////////////u9pLuT/////////////////////2P///////////////wfN///////////////u/2DY//////////P4/wZ84f/////////QbHDM6eL7///pAhYYCleBUjwAAADKSURBVHicY2TAAhihFAT8RBLkYISB93BBIUYEeAwVlGNEBlchgjqMjJ8Z+GCCJyGCFoyMzxkYpMB6gbr2gwSdgLw7ULeoAtnbQYJeOz0YGa+AhHQhBqwBCoaCWceBglYQwflAwSQIcyeDB9SqCUDBwk87wkGaQmH2NwEF65FdCfZvISPDBEZ0EA905yIwa2kM4yd+EOMTWHA9qrrHYEGGfYwgRf+ZIILXIYKnQOznUmCh/2cZIIIMDFdhloMDThka8gz3gELysOgAABUsKBV+DcHKAAAAAElFTkSuQmCC",
+        can_breed : `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAqNQTFRFAAAAhIB1hIB1hIB1hYF2hYF2hoN2hIB1hIB1hIB1hYB1kYyB5dvR+vPq+fDp49fPiIV1hIB1hIB1hoV2iol21c3Gq6GX5NjI+fDm+vTr69/QsqaXiod3hIB1hIB1hYF2h4V4+vfz9fHqn5KIzb+o4tTB5tbF18iztKiYycO7hYF2hIB1hIB1iIh57+rltaqiqp+Txridw7mXt7CXopiO+fby6+fgiYd2hIB1j4p86uLc1M7GtKmhsKacyMC57Ofiiod3hIB1hIB1hIB1z8fA8Ovm8+/o5NzWr6ifhn9zhIB15dzW8uzn9vXv9/Xwoa+TR2cuI0wGPl0kWGVEf31whIB1hYF27OnixcChvriRwcGhvMWwJE0IKVANPlkmLFQPIUwFWGZEhIB1hYF2v7mn1sau7d7NuKyPy8i3/fz3W3JELU8QfXtcnot6bm9VJksLMVMYhIB1s6eX38265dPAyrmmq6SU+PTtz8nBPFcfRl8ow6yexq2dy7qva21ZZGxRhIB1h4N4p5uTy7Wm79nHvKiXrKWc+vTv9vDra3VUNFcVM1gUbXRNbXRMd4FcTV04PlYoHEEBhIB1gX5xwbSxkIN5q5eKjH502tTP9e/q7ebjHkgBKWMBK2cBKmQBJVkBLGoBJl0BHkcBgnxzopmTzMS+rqWf3tjT9/Hs8+zpHkoBTmUt0r+ySmMvJFkB7eXig310ysG73NPM2tHL4trU5NvV39fRH0oBK2oBZHZF4tLKLUQVJFgBhIB1dGxl2M/Jz8a/zsW+H0sBLm8BLm4BJ1UHbmFeIU0BJlwBhIB1hX92cWljvbSu4tnT5d3XH0wBL3EBKWIBI1MBGz0CdW9mHhMOWE5KcmpkaWBaIkcGI1UBIU8BHEUB////lZSLiYh/l4CBreMNlgAAAOF0Uk5TAILe7/r76g585/T9/v///+h1e97k//////////WVJbz8////////////9VB28////////////+S1+v////////xuGeT//////7hR///////////wQoHy/////////////qdv9v//////////////+ddZ////////////////+JxT6P/////////////////7wWku5P///////////////////9j//////////////wfN/////////////+7/YNj/////////8/j/Bnzh/////////9BscMzp4vv//+kCFhgKeaEyHwAAAM9JREFUeJxjZMACGKEUBPxEEuRghIH3cEEhRgR4DBWUY0QGVyGCOoyMnxn4YIInIYIWjIzPGRikwHqBuvaDBJ2AvDtQt6gC2dtBgl47PRgZr4CEdCEGrAEKhoJZx4GCVhDB+UDBJAhzJ4MH1KoJQMHCT/wg5uowmP2NQMEGRnSQz8gwCVXkHzNjHNCdi8GcJbGMn/+DDPoMFlwPV/VMGkg8BQsy7AVK8zH+Z4LI3IQIngSxX0iChf6fZ4AIMjBcgeqHhKYKNOQZ7gKFFGDRAQCrgSoVqjiWggAAAABJRU5ErkJggg==`,
+        cant_breed : `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAqZQTFRFAAAAbl1Qbl1Qbl1Qb15Rb15RcF9Rbl1Qbl1Qbl1Qb11QeWZYv5+P0bGg0K+fvZyOcWFQbl1Qbl1QcGFRc2RRspWIj3Vnvp2J0K+d0bGhxKKOlXlnc2JRbl1Qbl1Qb15RcWFS0bSmza+ghWpdq4tzvZqEwJyHs5F7lnpoqI6Ab15Rbl1Qbl1QcWNTx6qdl3xvjnRlpYZro4dnmYBnh29h0LOmxKiZcmJRbl1Qd2RVw6SXsZaIlntuk3lrp4x/xaibc2JRbl1Qbl1Qbl1QrZGDyKudy66fvqCSknptcFxPbl1Qv6CSyqyezbKk0LKkonRqczQqYBwPay0jZj01bVpNbl1Qb15RxaqbpIxun4ZjoYxusId9YR0PYiASZysmZCMUYBwNZj42bl1Qb15Rn4dys5B3xqGMmn1iqZF907epdkE2YSEUfVFEhWVUcEhAXx8RYikfbl1QupV/v5qDqYdyj3dlz7GirZKEZSofbzAko31spX5rqYd3YicdYSIYbl1QcV9Si3FlqYRyx56InXpnkHhr0bGkza+hdUlBayYYayYZfEY9hVBIaSMWZh8SWhISbl1QbFxNoYN5eF9Tj25edVxPtpqOza6gxqebYRcPfCcFfykGfScIciAMgyoJfSgFdSQDYBcObVpPh29lqo+CkXhtuZ2Qzq+iy6yfYhcPfCYIdTQqsop6bzMqcCEGxqebbVtPqYyAuJqMtpiLvZ+Rvp+SupyPYxgPgioGficKgEM5vZmKVB4ZbyAGbl1QYU9FtJeKrZCDrI+CZBgPhywIhiwIbSAPXEdAZRoLdCMDbl1Qb1xRXkxEnoN3vZ6Qv6GTZRkQiS4IeycEbB4IVBIRYlFGGQ4KSTkzX01EWEY+XhgTbR4MZxsLXRQQ1bqvfGxfcmNXfl1YSou4DwAAAOJ0Uk5TAILe7/r76g585/T9/v///+h1e97k//////////WVJbz8////////////9VB28////////////+S1+v////////xuGeT//////7hR///////////wQoHy/////////////qdv9v//////////////+dBZ///////////////94FPo/////////////////u9pLuT/////////////////////2P///////////////wfN///////////////u/2DY//////////P4/wZ84f/////////QbHDM6eL7///pAhYYCleBUjwAAADKSURBVHicY2TAAhihFAT8RBLkYISB93BBIUYEeAwVlGNEBlchgjqMjJ8Z+GCCJyGCFoyMzxkYpMB6gbr2gwSdgLw7ULeoAtnbQYJeOz0YGa+AhHQhBqwBCoaCWceBglYQwflAwSQIcyeDB9SqCUDBwk87wkGaQmH2NwEF65FdCfZvISPDBEZ0EA905yIwa2kM4yd+EOMTWHA9qrrHYEGGfYwgRf+ZIILXIYKnQOznUmCh/2cZIIIMDFdhloMDThka8gz3gELysOgAABUsKBV+DcHKAAAAAElFTkSuQmCC`,
         settings : "data:image/png;base64,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"
       };
 
-// MAIN
 function runNoBreedScript() {
 
   console.log("[FR Breeding Lock Script] Active")
-
   // set up defaults on first run
   if(localStorage.getItem(`fr-do-not-breed-list`)  == null) {
     localStorage.setItem( `fr-do-not-breed-list`, `[]` );
@@ -50,7 +48,7 @@ function runNoBreedScript() {
     #nobreed-controls {
       position: absolute;
       top: 8px;
-      right: 40px;
+      right: 50px;
     }
     .nobreed-button {
       padding: 0;
@@ -178,18 +176,20 @@ function runNoBreedScript() {
     }
     .rmv-dragon {
       margin-right: 1em;
-      color: rgba(var(--error, 150, 0, 0),0.3);
-      background: rgba(var(--error, 150, 0, 0),0.1);
+      color: var(--text, #000);
+      background: rgba(150, 0, 0, 0.5);
+      opacity: 0.5;
       border: none;
       position: relative;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.3s color;
+      transition: 0.3s opacity;
       padding: 0 0.3em;
       border-radius: 5px;
     }
     .rmv-dragon:hover {
-      color: rgba(var(--error, 150, 0, 0),1);
+      color: var(--text, #000);
+      opacity: 1;
     }
     .rmv-dragon.tipsy::after {
       font-weight: normal;
@@ -219,7 +219,7 @@ function runNoBreedScript() {
         settings_modal = createNoBreedScriptModal('settings', `Breeding Lock Script Settings`, modal_content,`--width: 350px;--left:-300px;`),
         settings_button = createNoBreedScriptButton('settings', `Breeding Lock Script Settings`, settings_modal, NBS_ASSETS.settings),
         container = document.createElement("div");
-    document.querySelector(`.inner-content`).before(container);
+    document.querySelector(`#fr-layout-tutorial-button`).before(container);
     container.id = `nobreed-controls`;
     container.append(settings_modal,settings_button);
 
@@ -249,7 +249,6 @@ function runNoBreedScript() {
       backup_zone.prepend(button);
     });
     backup_zone.querySelector("#backup-import").disabled = true;
-
     // dynamically enable import button based on whether or not textarea is empty
     ['change','keyup'].forEach(event => {
       backup_zone.querySelector("#data").addEventListener(event, function(e) {
@@ -271,9 +270,12 @@ function runNoBreedScript() {
       danger_zone.append(button);
     });
 
-  } else if (/open-nest/.test(window.location.href)) {
-    console.log("\t[FR Breeding Lock Script] On Breeding Page");
 
+
+  } else if (/open-nest/.test(window.location.href)) {
+        
+    console.log("\t[FR Breeding Lock Script] On Breeding Page");
+        
     // load and split our unbreedables into separate mom and dad lists
     let unbreedables = JSON.parse(localStorage.getItem(`fr-do-not-breed-list`)),
         remove = localStorage.getItem(`fr-do-not-breed-remove`),
@@ -287,6 +289,7 @@ function runNoBreedScript() {
     // we call the function to handle removing or disabling dragons that we don't want to breed.
     const observer_dad = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
+        //console.log(mutation.type, mutation.target.id, mutation.target.childNodes.length, mutation.target.attributes)
         if (mutation.type != "childList" && mutation.target.classList.contains("nest-picker") && mutation.target.disabled != true) {
           doDragonRemove(mutation.target,dads,remove);
         }
@@ -294,11 +297,20 @@ function runNoBreedScript() {
     });
     const observer_mom = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
+        //console.log(mutation.type, mutation.target.id, mutation.target.childNodes.length, mutation.target.attributes)
+        // whenever it gets re-disabled we can call this to remove newly added stuff
+
+        //console.log(`added: ${mutation.addedNodes.length} / removed: ${mutation.removedNodes.length}`)
+        // whenever our selector gets disabled we will call our remove function to re-remove stuff since it keeps requesting the list of valid dragons every time you change the dragon
         if (mutation.type != "childList" && mutation.target.classList.contains("nest-picker") && mutation.target.disabled != true) {
+          //console.log("\tin if:",mutation.type, mutation.target.id, mutation.target.attributes);
+          //let before = mutation.target.childNodes.length;
           doDragonRemove(mutation.target,moms,remove);
+          //console.log(`\t\tremove done: before remove: ${before} / after remove: ${mutation.target.childNodes.length}`) //high number is from \n's that aren't removed when node is removed
         }
       });
     });
+
     // start observing the parents of the selects
     observer_dad.observe(dad_info, {
       attributes: true,
@@ -312,8 +324,7 @@ function runNoBreedScript() {
     });
 
   } else if (/dragon/.test(window.location.href) && document.querySelector("#dragon-profile-owner-buttons") != null && document.querySelector(`.common-ui-button[data-tooltip-source="#button-breed-tooltip"]`) != null) {
-    console.log("\t[FR Breeding Lock Script] on dragon's profile");
-
+    // add our css
     applyBreedScriptCSS(`[data-toggle="on"] .off { display: none; }
     [data-toggle="off"] .on { display: none; }
     .breed-lock-icon { float: right; position: relative; cursor: pointer;}
@@ -330,9 +341,11 @@ function runNoBreedScript() {
     .hide { display: none !important }
     `);
 
+    console.log("\t[FR Breeding Lock Script] on dragon's profile");
+
     // get gender, id, and toggle button
     let header = document.querySelector("#dragon-profile-details-lineage > .dragon-profile-details-header"),
-        name = document.querySelector(".dragon-profile-header-name").innerText,
+        name = document.querySelector(`#dragon-profile-header h1.responsive-page-header-title`).innerText.replace(/#|\(|\)| |[0-9]|\n/g, ''),
         id = document.querySelector(".dragon-profile-header-number").innerText.substring(2, document.querySelector(".dragon-profile-header-number").innerText.length-1),
         gender = (document.querySelector(`.dragon-profile-icons img[alt~="Female"]`) != null) ? F : M,
         unbreedables = JSON.parse(localStorage.getItem(`fr-do-not-breed-list`)),
@@ -342,8 +355,7 @@ function runNoBreedScript() {
         breed_tooltip = document.querySelector("#button-breed-tooltip"),
         original_breeding_tooltip = breed_tooltip.cloneNode(true),
         started_disabled = (breed_button.classList.contains(`common-ui-button-disabled`)) ? true : false;
-    breed_tooltip.setAttribute("data-original-image",breed_button.querySelector(`img`).src);
-    original_breeding_tooltip.id = "button-breed-tooltip-original"; //make copy of original tooltip for toggling purposes
+    original_breeding_tooltip.id = "button-breed-tooltip-original"; // make copy of it for toggling purposes
     original_breeding_tooltip.classList = "hide";
     breed_tooltip.after(original_breeding_tooltip); // put after the original tooltip
 
@@ -354,9 +366,10 @@ function runNoBreedScript() {
     if (found != undefined) {
       breed_tooltip.innerHTML = `This dragon has been <strong>locked</strong> from breeding.`;
       breed_button.classList.add("common-ui-button-disabled");
+      breed_button.classList.add("theme-ui-1-disabled")
+      breed_button.classList.remove("theme-ui-1");
       breed_button.disabled = true;
       breed_button.href = '';
-      breed_button.querySelector(`img`).src = `/static/layout/profile/button-breed-disabled.png`;
     }
     // add our toggle breed lock button to the 'lineage' header
     toggle_button.innerHTML = `<img src="${NBS_ASSETS.cant_breed}" class="off" alt="This Dragon is Locked for Breeding"><img src="${NBS_ASSETS.can_breed}" class="on" alt="This Dragon is Unlocked For Breeding">`;
@@ -368,14 +381,15 @@ function runNoBreedScript() {
     toggle_button.addEventListener("click", function() { manageNoBreedScriptDragonStatus(name, id, gender, this, breed_tooltip, breed_button, started_disabled) });
     breed_button.addEventListener("click", function(event) {
       if (this.classList.contains(`common-ui-button-disabled`)) {
-          event.preventDefault(); // prevent us from clicking locked dragons' buttons
+          event.preventDefault(); // prevent us from clicking locked dragons' breed button
       }
     });
     header.append(toggle_button);
 
-  } else if ((/lair/.test(window.location.href) || /den/.test(window.location.href)) && document.querySelector("#lair-action-edit") != null) {
-    console.log("\t[FR Breeding Lock Script] In our lair or den.");
 
+
+  } else if ((/lair/.test(window.location.href) || /den/.test(window.location.href)) && document.querySelector("#lair-action-edit") != null) {
+    // add css
     applyBreedScriptCSS(`[data-toggle="on"] .off { display: none; }
     [data-toggle="off"] .on { display: none; }
     .breed-lock-icon {position:relative; font-size: 11px;}
@@ -393,12 +407,12 @@ function runNoBreedScript() {
     .tipsy:hover::after { display: block !important; }
     `);
 
+    console.log("\t[FR Breeding Lock Script] In our lair or den.");
     // get all dragons & our list of unbreedables
     let dragons = document.querySelectorAll(".lair-page-dragon"),
         unbreedables = JSON.parse(localStorage.getItem(`fr-do-not-breed-list`)),
         lair_management = localStorage.getItem(`fr-do-not-breed-lair-management`),
         toggle_button = document.createElement("span");
-    
     // set up base lair icon to copy and use    
     toggle_button.innerHTML = `<img src="${NBS_ASSETS.cant_breed}" class="off" alt="This Dragon is Locked for Breeding"><img src="${NBS_ASSETS.can_breed}" class="on" alt="This Dragon is Unlocked For Breeding">`;
     toggle_button.classList = `breed-lock-icon tipsy`;
@@ -406,7 +420,6 @@ function runNoBreedScript() {
     toggle_button.setAttribute("data-tipsy-off","This Dragon is Locked for Breeding");
     toggle_button.setAttribute("data-tipsy-on","This Dragon is Unlocked For Breeding");
     toggle_button.setAttribute("data-tipsy",toggle_button.getAttribute("data-tipsy-on"));
-
     // loop thru dragons, getting their info & checking if they're already locked or not
     dragons.forEach(dragon => {
       let url = dragon.querySelector("a").href.split("/"),
@@ -452,8 +465,9 @@ function manageNoBreedScriptDragonStatus(name, id, gender, button, breed_tooltip
     if (!skip) {
       breed_tooltip.innerHTML = `This dragon has been <strong>locked</strong> from breeding.`;
       breed_button.classList.add("common-ui-button-disabled");
+      breed_button.classList.add("theme-ui-1-disabled");
+      breed_button.classList.remove("theme-ui-1");
       breed_button.href = '';
-      breed_button.querySelector(`img`).src = `/static/layout/profile/button-breed-disabled.png`;
     }
     console.log(`\t[FR Breeding Lock Script] Added ${dragon.name} (#${dragon.id}) to unbreedable list.`)
   } else {
@@ -466,8 +480,8 @@ function manageNoBreedScriptDragonStatus(name, id, gender, button, breed_tooltip
       breed_tooltip.innerHTML = document.querySelector("#button-breed-tooltip-original").innerHTML;
       if (!started_disabled) {
         breed_button.classList.remove("common-ui-button-disabled");
-        breed_button.querySelector(`img`).src = breed_tooltip.getAttribute("data-original-image");
-        breed_button.href = breed_button.getAttribute("data-href");
+        breed_button.classList.remove("theme-ui-1-disabled");
+        breed_button.classList.add("theme-ui-1");
       }
     }
     console.log(`\t[FR Breeding Lock Script] Removed ${found.name} (#${found.id}) from unbreedable list.`)
@@ -680,8 +694,7 @@ function loadNoBreedScriptSettings() {
           backup_zone = settings_modal.querySelector("#settings-list #backup-zone"),
           exported_backup = backup_zone.querySelector("#data"),
           danger_zone = settings_modal.querySelector("#settings-list #danger-zone");
-
-  // refresh content each time we run this script
+  // refresh content of modal each time we run this function
   general.innerHTML = '';
   dragonlist_container.innerHTML = '<h4><img src="https://www1.flightrising.com/static/layout/lair/icons/male.png" alt="Male"> Males</h4><h4><img src="https://www1.flightrising.com/static/layout/lair/icons/female.png" alt="Female"> Females</h4><ul class="dragon-list" id="males"></ul><ul id="females" class="dragon-list"></ul>';
   exported_backup.value = '';
