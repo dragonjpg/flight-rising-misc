@@ -56,7 +56,7 @@
                       dragon_info.querySelector('div.dragon-tip-detail:nth-child(6) > div:nth-child(2)').innerText.trim().split(' ')[0]];
 
     // check if its a g1
-    if (settings.label_gen_ones && dragon_info.querySelector('div:nth-child(2) > div:nth-child(3) span[style*="color"]')) {
+    if (settings.label_gen_ones && dragon_info.querySelector('div:nth-child(2) > div:nth-child(3) > div:nth-child(2) strong')) {
       var g1 = document.createElement("strong");
       g1.innerText = "G1 ";
       parent_wrapper.prepend(g1);
