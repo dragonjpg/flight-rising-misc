@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Flight Rising: AH Additional Dragon Info
-// @namespace    https://github.com/dragonjpg
 // @author       dragon.jpg
-// @description  add labels for dragon colors, g1 status (optional), double color patterns (optional), & consecutive colors (optional). Data is sourced from the dragon tooltips that are rendered on the page. Edit script to change settings. Based on zombae's script: https://greasyfork.org/en/scripts/412508 & fully compatible with my dark mode and compact auction house userstyles
+// @namespace    https://github.com/dragonjpg/flight-rising-misc/
+// @description  add dragon color info, g1 info, double patterns, label consecutive colors, etc. Data is sourced from the dragon tooltips that are rendered on the page. Edit script to change settings. Based on zombae's script: https://greasyfork.org/en/scripts/412508 & fully compatible with my dark mode and compact auction house userstyles
 // @match        https://*.flightrising.com/auction-house/buy/*/dragons*
 // @grant        none
-// @version      1.0.0
+// @version      1.0.1
 // @license      MIT
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
 // ==/UserScript==
@@ -51,12 +51,12 @@
   // original function by zombae: https://greasyfork.org/en/scripts/412508
   function getDragonTipInfo(dragon_tip, colorblocks_wrapper, parent_wrapper ) {
     let dragon_info = document.getElementById(dragon_tip),
-        colors = [dragon_info.querySelector('div:nth-child(2) > div:nth-child(4)').innerText.split('Primary Gene:')[1].split(' ')[1],
-                      dragon_info.querySelector('div:nth-child(2) > div:nth-child(5)').innerText.split('Secondary Gene:')[1].split(' ')[1],
-                      dragon_info.querySelector('div:nth-child(2) > div:nth-child(6)').innerText.split('Tertiary Gene:')[1].split(' ')[1]];
+        colors = [dragon_info.querySelector('div.dragon-tip-detail:nth-child(4) > div:nth-child(2)').innerText.trim().split(' ')[0],
+                      dragon_info.querySelector('div.dragon-tip-detail:nth-child(5) > div:nth-child(2)').innerText.trim().split(' ')[0],
+                      dragon_info.querySelector('div.dragon-tip-detail:nth-child(6) > div:nth-child(2)').innerText.trim().split(' ')[0]];
 
     // check if its a g1
-    if (settings.label_gen_ones && dragon_info.querySelector('div:nth-child(2) > div:nth-child(3) span[style*="color"]')) {
+    if (settings.label_gen_ones && dragon_info.querySelector('div:nth-child(2) > div:nth-child(3) > div:nth-child(2) strong')) {
       var g1 = document.createElement("strong");
       g1.innerText = "G1 ";
       parent_wrapper.prepend(g1);
