@@ -2,8 +2,9 @@
 // @name        Flight Rising: Theme Quickswitcher
 // @namespace   https://github.com/dragonjpg
 // @author      dragon.jpg
-// @version     1.0.0
+// @version     1.1.0
 // @match       https://*.flightrising.com/*
+// @run-at      document-body
 // @grant       none
 // @license     MIT
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=flightrising.com
@@ -20,25 +21,51 @@ const NIGHT_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><
 
 (function() {
   if(document.querySelector(`#fr-layout`) != null) {
-    document.querySelector(`#fr-layout`).setAttribute('data-theme',localStorage.getItem(`fr-active-theme`));
     if(localStorage.getItem(`fr-active-theme`)  == null) {
       localStorage.setItem(`fr-active-theme`, document.querySelector(`#fr-layout`).getAttribute('data-theme'));
     };
-    let toggler = document.createElement(`div`);
-    let togglerCSS = document.createElement(`style`);
-    togglerCSS.type = `text/css`;
-    togglerCSS.appendChild(document.createTextNode(`#themeswap { position: absolute; top: 8px; right: 36px; width: 20px; height: 20px; cursor: pointer; border: none; background: none; z-index: 4; } .fr-theme[data-theme="${DAY}"] .night { display: none } .fr-theme[data-theme="${NIGHT}"] .day { display: none }`));
-    toggler.innerHTML = `<button id="themeswap" data-theme="${localStorage.getItem(`fr-active-theme`)}" title="Toggle Theme"><span class="day">${DAY_SVG}</span><span class="night">${NIGHT_SVG}</span></button>`;
-    document.querySelector(`#fr-layout-player-module-logout`).before(toggler);
-    toggler.before(togglerCSS);
-    toggler.addEventListener('click',function() {
-      if (localStorage.getItem(`fr-active-theme`) == DAY) {
-        localStorage.setItem( `fr-active-theme`,NIGHT);
-        document.querySelector(`#fr-layout`).setAttribute('data-theme',NIGHT);
+    document.querySelector(`#fr-layout`).setAttribute('data-theme',localStorage.getItem(`fr-active-theme`));
+    waitForElm('#fr-layout-banner').then((elm) => {
+      let toggler = document.createElement(`div`);
+      let togglerCSS = document.createElement(`style`);
+      togglerCSS.type = `text/css`;
+      togglerCSS.appendChild(document.createTextNode(`.fr-layout-player-module-username { padding-right: 50px } #themeswap { position: absolute; top: 8px; right: 36px; width: 20px; height: 20px; cursor: pointer; border: none; background: none; z-index: 4; } #fr-layout-login-box {display: flex;grid-gap: 5px;} #fr-layout-login-box #themeswap {position: static } .fr-theme[data-theme="${DAY}"] .night { display: none } .fr-theme[data-theme="${NIGHT}"] .day { display: none }`));
+      toggler.innerHTML = `<button id="themeswap" data-theme="${localStorage.getItem(`fr-active-theme`)}" title="Toggle Theme"><span class="day">${DAY_SVG}</span><span class="night">${NIGHT_SVG}</span></button>`;
+      if (document.querySelector(`#fr-layout-login-box`)) {
+        document.querySelector(`#fr-layout-login`).after(toggler);
       } else {
-        localStorage.setItem( `fr-active-theme`,DAY);
-        document.querySelector(`#fr-layout`).setAttribute('data-theme',DAY);
+        document.querySelector(`#fr-layout-player-module-logout`).before(toggler);
       }
+      toggler.before(togglerCSS);
+      toggler.addEventListener('click',function() {
+        if (localStorage.getItem(`fr-active-theme`) == DAY) {
+          localStorage.setItem( `fr-active-theme`,NIGHT);
+          document.querySelector(`#fr-layout`).setAttribute('data-theme',NIGHT);
+        } else {
+          localStorage.setItem( `fr-active-theme`,DAY);
+          document.querySelector(`#fr-layout`).setAttribute('data-theme',DAY);
+        }
+      })
     })
-  }
+  };
 })();
+
+function waitForElm(selector) {
+  /*https://stackoverflow.com/questions/5525071/how-to-wait-until-an-element-exists*/
+    return new Promise(resolve => {
+        if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector));
+        }
+        const observer = new MutationObserver(mutations => {
+            if (document.querySelector(selector)) {
+                observer.disconnect();
+                resolve(document.querySelector(selector));
+            }
+        });
+        // If you get "parameter 1 is not of type 'Node'" error, see https://stackoverflow.com/a/77855838/492336
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    });
+}
