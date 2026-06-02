@@ -2,7 +2,7 @@
 // @name        Flight Rising: Theme Quickswitcher
 // @namespace   https://github.com/dragonjpg
 // @author      dragon.jpg
-// @version     1.1.0
+// @version     1.1.1
 // @match       https://*.flightrising.com/*
 // @run-at      document-body
 // @grant       none
@@ -29,7 +29,7 @@ const NIGHT_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><
       let toggler = document.createElement(`div`);
       let togglerCSS = document.createElement(`style`);
       togglerCSS.type = `text/css`;
-      togglerCSS.appendChild(document.createTextNode(`.fr-layout-player-module-username { padding-right: 50px } #themeswap { position: absolute; top: 8px; right: 36px; width: 20px; height: 20px; cursor: pointer; border: none; background: none; z-index: 4; } #fr-layout-login-box {display: flex;grid-gap: 5px;} #fr-layout-login-box #themeswap {position: static } .fr-theme[data-theme="${DAY}"] .night { display: none } .fr-theme[data-theme="${NIGHT}"] .day { display: none }`));
+      togglerCSS.appendChild(document.createTextNode(`.fr-layout-player-module-username { padding-right: 50px } #themeswap { position: absolute; top: 8px; right: 36px; width: 20px; height: 20px; cursor: pointer; border: none; background: none; z-index: 4; } .day, .night { filter: drop-shadow(-1px -1px 0px var(--button-disabled-stroke)) drop-shadow(1px -1px 0px var(--button-disabled-stroke)) drop-shadow(1px 1px 0px var(--button-disabled-stroke)) drop-shadow(-1px 1px 0px var(--button-disabled-stroke)); color: var(--button-disabled-text) } .night:hover, .day:hover { --button-disabled-stroke: var(--button-icon); color: var(--button-stroke); } #fr-layout-login-box {display: flex;grid-gap: 5px;} #fr-layout-login-box #themeswap {position: static } .fr-theme[data-theme="${DAY}"] .night { display: none } .fr-theme[data-theme="${NIGHT}"] .day { display: none }`));
       toggler.innerHTML = `<button id="themeswap" data-theme="${localStorage.getItem(`fr-active-theme`)}" title="Toggle Theme"><span class="day">${DAY_SVG}</span><span class="night">${NIGHT_SVG}</span></button>`;
       if (document.querySelector(`#fr-layout-login-box`)) {
         document.querySelector(`#fr-layout-login`).after(toggler);
